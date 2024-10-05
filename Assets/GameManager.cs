@@ -14,11 +14,13 @@ public class GameManager : MonoBehaviour
     private VisualElement grabZone;
 
     private GrabBarController grabBarController;
+    private HungerBarController hungerBarController;
 
     // Start is called before the first frame update
     void Start()
     {
         grabBarController = gameObject.GetComponent<GrabBarController>();
+        hungerBarController = gameObject.GetComponent<HungerBarController>();
     }
 
     // Update is called once per frame
@@ -58,6 +60,7 @@ public class GameManager : MonoBehaviour
         if (grabBarController.IsGrabPointerInZone())
         {
             TargetCreature.SetState(CreatureState.GrabbedHit);
+            hungerBarController.ChangeHunger(TargetCreature.hungerValue);
         } else
         {
             TargetCreature.SetState(CreatureState.GrabbedMiss);

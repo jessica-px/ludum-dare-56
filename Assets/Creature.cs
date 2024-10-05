@@ -19,6 +19,7 @@ public class Creature : MonoBehaviour
     private bool isSelected = false;
     public float maxSpeed = 2;
     public Color color;
+    public float hungerValue = 10;
 
     public CreatureState State { get; private set; } = CreatureState.Idle;
 
