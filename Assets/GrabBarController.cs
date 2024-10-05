@@ -12,8 +12,8 @@ public class GrabBarController : MonoBehaviour
     private VisualElement grabPointer;
     private VisualElement grabZone;
 
-    private float GrabBarWidth = 300; // harcoded widths here bc I cannot figure out how to read this properly
-    private float GrabPointerWidth = 10;
+    private float GrabBarWidth = 400; // harcoded widths here bc I cannot figure out how to read this properly
+    private float GrabPointerWidth = 40;
     private float GrabPointerPercent = 0;
     private float GrabPointerSpeed = .001f;
 
@@ -48,14 +48,16 @@ public class GrabBarController : MonoBehaviour
 
     public void HideGrabBar()
     {
-        grabBar.style.visibility = Visibility.Hidden;
+        grabZone.style.visibility = Visibility.Hidden;
+        grabPointer.style.visibility = Visibility.Hidden;
     }
 
     public void ShowGrabBar()
     {
         if (gameManager.TargetCreature)
         {
-            grabBar.style.visibility = Visibility.Visible;
+            grabZone.style.visibility = Visibility.Visible;
+            grabPointer.style.visibility = Visibility.Visible;
             grabZone.style.marginLeft = GrabBarWidth * gameManager.TargetCreature.sensitivityStart;
             grabZone.style.width = GrabBarWidth * gameManager.TargetCreature.sensitivityAmount;
             GrabPointerPercent = 0;

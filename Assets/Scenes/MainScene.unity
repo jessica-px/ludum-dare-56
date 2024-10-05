@@ -152,11 +152,11 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1033502726}
-  - {fileID: 88549686}
-  - {fileID: 410604644}
   - {fileID: 1854201489}
-  - {fileID: 2106461338}
+  - {fileID: 410604644}
   - {fileID: 1247687756}
+  - {fileID: 2106461338}
+  - {fileID: 88549686}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &88549682
@@ -322,6 +322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 10
   color: {r: 1, g: 0.95261705, b: 0.2295596, a: 1}
+  hungerValue: 10
   sensitivityStart: 0.25
   sensitivityAmount: 0.5
 --- !u!1 &410604640
@@ -487,6 +488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 8
   color: {r: 1, g: 1, b: 1, a: 1}
+  hungerValue: 10
   sensitivityStart: 0.25
   sensitivityAmount: 0.25
 --- !u!1 &519420028
@@ -832,8 +834,8 @@ Transform:
   m_GameObject: {fileID: 697512799}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.2639, y: 0.0275, z: 0}
-  m_LocalScale: {x: 0.72385746, y: 10.3080225, z: 1}
+  m_LocalPosition: {x: -9.8734, y: 0.0275, z: 0}
+  m_LocalScale: {x: 3.5047731, y: 10.3080225, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1069,6 +1071,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 6
   color: {r: 0, g: 0.03375435, b: 1, a: 1}
+  hungerValue: 10
   sensitivityStart: 0.25
   sensitivityAmount: 0.1
 --- !u!1 &1247687755
@@ -1120,6 +1123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 8
   color: {r: 1, g: 1, b: 1, a: 1}
+  hungerValue: 10
   sensitivityStart: 0.25
   sensitivityAmount: 0.25
 --- !u!50 &1247687758
@@ -1550,8 +1554,8 @@ Transform:
   m_GameObject: {fileID: 1663786214}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.02, y: -4.5579, z: 0}
-  m_LocalScale: {x: 22.697746, y: 1.1341516, z: 1}
+  m_LocalPosition: {x: 0.02, y: -4.1631, z: 0}
+  m_LocalScale: {x: 22.697746, y: 1.9237479, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1735,6 +1739,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 6
   color: {r: 0, g: 0.03375435, b: 1, a: 1}
+  hungerValue: 10
   sensitivityStart: 0.25
   sensitivityAmount: 0.1
 --- !u!50 &1854201491
@@ -1975,8 +1980,8 @@ Transform:
   m_GameObject: {fileID: 2055294794}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.23, y: 0.1, z: 0}
-  m_LocalScale: {x: 0.72385746, y: 10.3080225, z: 1}
+  m_LocalPosition: {x: 9.6164, y: 0.1, z: 0}
+  m_LocalScale: {x: 3.9511034, y: 10.3080225, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -2030,6 +2035,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 10
   color: {r: 1, g: 0.95261705, b: 0.2295596, a: 1}
+  hungerValue: 10
   sensitivityStart: 0.25
   sensitivityAmount: 0.5
 --- !u!50 &2106461340
