@@ -322,8 +322,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 10
   color: {r: 1, g: 0.95261705, b: 0.2295596, a: 1}
-  sensitivityStart: 25
-  sensitivityAmount: 50
+  sensitivityStart: 0.25
+  sensitivityAmount: 0.5
 --- !u!1 &410604640
 GameObject:
   m_ObjectHideFlags: 0
@@ -487,8 +487,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 8
   color: {r: 1, g: 1, b: 1, a: 1}
-  sensitivityStart: 25
-  sensitivityAmount: 50
+  sensitivityStart: 0.25
+  sensitivityAmount: 0.25
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1069,8 +1069,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 6
   color: {r: 0, g: 0.03375435, b: 1, a: 1}
-  sensitivityStart: 80
-  sensitivityAmount: 10
+  sensitivityStart: 0.25
+  sensitivityAmount: 0.1
 --- !u!1 &1247687755
 GameObject:
   m_ObjectHideFlags: 0
@@ -1120,8 +1120,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 8
   color: {r: 1, g: 1, b: 1, a: 1}
-  sensitivityStart: 25
-  sensitivityAmount: 50
+  sensitivityStart: 0.25
+  sensitivityAmount: 0.25
 --- !u!50 &1247687758
 Rigidbody2D:
   serializedVersion: 4
@@ -1707,8 +1707,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 6
   color: {r: 0, g: 0.03375435, b: 1, a: 1}
-  sensitivityStart: 25
-  sensitivityAmount: 50
+  sensitivityStart: 0.25
+  sensitivityAmount: 0.1
 --- !u!50 &1854201491
 Rigidbody2D:
   serializedVersion: 4
@@ -2002,8 +2002,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 10
   color: {r: 1, g: 0.95261705, b: 0.2295596, a: 1}
-  sensitivityStart: 25
-  sensitivityAmount: 50
+  sensitivityStart: 0.25
+  sensitivityAmount: 0.5
 --- !u!50 &2106461340
 Rigidbody2D:
   serializedVersion: 4
