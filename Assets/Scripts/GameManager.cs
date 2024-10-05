@@ -33,10 +33,11 @@ public class GameManager : MonoBehaviour
     private HungerBarController hungerBarController;
     private TimerController timerController;
     private PlayerHandController playerHandController;
+    private AudioController audioController;
 
     private float secondsSinceLastSpawn = 0;
     public float spawnDelay = 2;
-    private int maxCreatureCount = 3;
+    private int maxCreatureCount = 4;
     public int currCreatureCount = 0;
 
     // Start is called before the first frame update
@@ -47,6 +48,7 @@ public class GameManager : MonoBehaviour
         newGameButton = uiRoot.Q<Button>("NewGameButton");
         newGameButton.clicked += () => StartNewGame();
 
+        audioController = gameObject.GetComponent<AudioController>();
         grabBarController = gameObject.GetComponent<GrabBarController>();
         hungerBarController = gameObject.GetComponent<HungerBarController>();
         timerController = gameObject.GetComponent<TimerController>();
@@ -100,22 +102,22 @@ public class GameManager : MonoBehaviour
         {
             return GamePhase.Early;
         }
-        // 10 - 40  seconds
-        if (timerController.TimeElapsed < 40)
+        // 10 - 30  seconds
+        if (timerController.TimeElapsed < 30)
         {
             return GamePhase.EarlyMid;
+        }
+        // 30 - 40 seconds
+        else if (timerController.TimeElapsed < 40)
+        {
+            return GamePhase.Mid;
         }
         // 40 - 60 seconds
         else if (timerController.TimeElapsed < 60)
         {
-            return GamePhase.Mid;
-        }
-        // 60 - 80 seconds
-        else if (timerController.TimeElapsed < 80)
-        {
             return GamePhase.Late;
         }
-        // >80 seconds
+        // >60 seconds
         else
         {
             return GamePhase.End;
@@ -203,7 +205,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        // end game: 20% normal, 20% slow, 40% fast, 20% extra fast
+        // end game: 20% normal, 50% fast, 30% extra fast
         else 
         {
             float percent = Random.Range(0, 1f);
@@ -211,11 +213,7 @@ public class GameManager : MonoBehaviour
             {
                 return CreaturePrefab;
             }
-            else if (percent < .4)
-            {
-                return SlowCreaturePrefab;
-            }
-            else if (percent < .8)
+            else if (percent < .7)
             {
                 return FastCreaturePrefab;
             }
@@ -257,17 +255,20 @@ public class GameManager : MonoBehaviour
             TargetCreature.SetState(CreatureState.GrabbedSuccess);
             hungerBarController.ChangeHunger(TargetCreature.hungerValue);
             playerHandController.PlayGrabAnimation(true);
+            audioController.PlaySoundEffect(SoundEffect.Success, .2f);
         }
         // Fail (pop the creature)
         else if (!grabBarController.IsGrabPointerInZone() && TargetCreature.IsHovered)
         {
             TargetCreature.SetState(CreatureState.GrabbedDeath);
             playerHandController.PlayGrabAnimation(false);
+            audioController.PlaySoundEffect(SoundEffect.Death, .5f);
         }
         // Fail (miss)
         else
         {
             TargetCreature.SetState(CreatureState.GrabbedMiss);
+            audioController.PlaySoundEffect(SoundEffect.Miss, 0);
         }
         UnsetTargetCreature();
     }

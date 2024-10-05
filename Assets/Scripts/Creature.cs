@@ -25,10 +25,6 @@ public class Creature : MonoBehaviour
     public Color color;
     public float hungerValue = 10;
 
-    public AudioClip successAudio;
-    public AudioClip missAudio;
-    public AudioClip deathAudio;
-
     public CreatureState State { get; private set; } = CreatureState.Idle;
 
     [Range(0, 1f)]
@@ -82,7 +78,6 @@ public class Creature : MonoBehaviour
                 break;
             case CreatureState.GrabbedMiss:
                 spriteRenderer.color = color;
-                audioSource.PlayOneShot(missAudio);
                 StartCoroutine(ResetToIdle());
                 break;
             case CreatureState.Idle:
@@ -90,13 +85,11 @@ public class Creature : MonoBehaviour
                 break;
             case CreatureState.GrabbedDeath:
                 spriteRenderer.color = Color.red;
-                StartCoroutine(DestroyCreatureAfterDelay());
-                audioSource.PlayOneShot(deathAudio);
+                DestroyCreature();
                 break;
             case CreatureState.GrabbedSuccess:
                 spriteRenderer.color = Color.green;
-                StartCoroutine(DestroyCreatureAfterDelay());
-                audioSource.PlayOneShot(successAudio);
+                DestroyCreature();
                 break;
         }
     }
@@ -108,9 +101,8 @@ public class Creature : MonoBehaviour
     }
 
 
-    IEnumerator DestroyCreatureAfterDelay()
+    void DestroyCreature()
     {
-        yield return new WaitForSeconds(.2f);
         gameManager.currCreatureCount = Mathf.Max(0, gameManager.currCreatureCount - 1);
         Destroy(gameObject);
     }

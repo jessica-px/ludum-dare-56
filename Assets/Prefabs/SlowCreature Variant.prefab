@@ -100,7 +100,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: SlowCreature Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2171664028681064928, guid: 52875f523ffe4a642ac0371355814271, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
