@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
 
     private float secondsSinceLastSpawn = 0;
     public float spawnDelay = 2;
-    private int maxCreatureCount = 6;
+    private int maxCreatureCount = 3;
     public int currCreatureCount = 0;
 
     // Start is called before the first frame update
@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour
     void SpawnCreature()
     {
         // we'll want to check for collisions here
-        Vector3 randomVector = new Vector3(Random.Range(-4f, 4f), Random.Range(-1f, 4f), 0);
+        Vector3 randomVector = new Vector3(Random.Range(-2.5f, 2.5f), Random.Range(-.3f, -2.5f), 0);
         Instantiate(GetRandomCreature(), randomVector, Quaternion.identity);
         secondsSinceLastSpawn = 0;
         currCreatureCount++;
@@ -126,19 +126,19 @@ public class GameManager : MonoBehaviour
         switch (phase)
         {
             case GamePhase.Early:
-                spawnDelay = .75f;
+                spawnDelay = 1.25f;
                 break;
             case GamePhase.EarlyMid:
-                spawnDelay = .6f;
+                spawnDelay = 1.1f;
                 break;
             case GamePhase.Mid:
-                spawnDelay = .5f;
+                spawnDelay = 1f;
                 break;
             case GamePhase.Late:
-                spawnDelay = .4f;
+                spawnDelay = .9f;
                 break;
             case GamePhase.End:
-                spawnDelay = .3f;
+                spawnDelay = .8f;
                 break;
         }
     }
