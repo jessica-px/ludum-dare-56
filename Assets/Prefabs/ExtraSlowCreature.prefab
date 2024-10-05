@@ -24,6 +24,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.4392157
       objectReference: {fileID: 0}
+    - target: {fileID: 1899664225943900941, guid: 52875f523ffe4a642ac0371355814271, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5825072813380259497, guid: 52875f523ffe4a642ac0371355814271, type: 3}
       propertyPath: color.b
       value: 0.44025147
@@ -47,6 +51,14 @@ PrefabInstance:
     - target: {fileID: 5825072813380259497, guid: 52875f523ffe4a642ac0371355814271, type: 3}
       propertyPath: startVeloctyRange
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6065526074345478552, guid: 52875f523ffe4a642ac0371355814271, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6065526074345478552, guid: 52875f523ffe4a642ac0371355814271, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 6065526074345478552, guid: 52875f523ffe4a642ac0371355814271, type: 3}
       propertyPath: m_LocalPosition.x

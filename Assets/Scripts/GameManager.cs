@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
     private GrabBarController grabBarController;
     private HungerBarController hungerBarController;
     private TimerController timerController;
+    private PlayerHandController playerHandController;
 
     private float secondsSinceLastSpawn = 0;
     public float spawnDelay = 2;
@@ -49,6 +50,7 @@ public class GameManager : MonoBehaviour
         grabBarController = gameObject.GetComponent<GrabBarController>();
         hungerBarController = gameObject.GetComponent<HungerBarController>();
         timerController = gameObject.GetComponent<TimerController>();
+        playerHandController = GameObject.Find("PlayerHand").GetComponent<PlayerHandController>();
         SetCursor(false);
         StartNewGame();
     }
@@ -248,14 +250,22 @@ public class GameManager : MonoBehaviour
     {
         SetCursor(false);
         grabBarController.HideGrabBar();
+
+        // Success
         if (grabBarController.IsGrabPointerInZone() && TargetCreature.IsHovered)
         {
             TargetCreature.SetState(CreatureState.GrabbedSuccess);
             hungerBarController.ChangeHunger(TargetCreature.hungerValue);
-        } else if (!grabBarController.IsGrabPointerInZone() && TargetCreature.IsHovered)
+            playerHandController.PlayGrabAnimation(true);
+        }
+        // Fail (pop the creature)
+        else if (!grabBarController.IsGrabPointerInZone() && TargetCreature.IsHovered)
         {
             TargetCreature.SetState(CreatureState.GrabbedDeath);
-        } else
+            playerHandController.PlayGrabAnimation(false);
+        }
+        // Fail (miss)
+        else
         {
             TargetCreature.SetState(CreatureState.GrabbedMiss);
         }
