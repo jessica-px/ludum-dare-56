@@ -1,17 +1,19 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <ui:VisualElement name="Container" style="flex-grow: 1; align-items: flex-end; justify-content: flex-end; width: 100%; height: 100%;">
-        <ui:VisualElement name="BottomPanel" style="flex-grow: 0; width: 100%; height: 130px; background-color: rgb(127, 103, 103); border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px; flex-shrink: 0; justify-content: space-between; align-items: center; flex-direction: row; -unity-background-image-tint-color: rgb(255, 225, 0);">
-            <ui:VisualElement name="LeftContainer" style="flex-grow: 0; width: 20%; align-items: center;">
-                <ui:ProgressBar value="50" title="Hunger" low-value="0" high-value="100" name="HungerBar" style="width: 197px;" />
-                <ui:Label tabindex="-1" text="00:00" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TimerLabel" style="color: rgb(255, 255, 255); -unity-font-style: normal; font-size: 32px;" />
-            </ui:VisualElement>
-            <ui:VisualElement name="GrabBar" style="flex-grow: 0; background-color: rgb(213, 200, 187); width: 550px; height: 55px; flex-shrink: 0; border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; visibility: visible;">
-                <ui:VisualElement name="GrabZone" style="flex-grow: 0; flex-shrink: 0; height: 100%; width: 40%; background-color: rgb(165, 94, 46); margin-left: 0;" />
-                <ui:VisualElement name="GrabPointer" style="flex-grow: 0; position: absolute; flex-shrink: 0; width: 80px; height: 97px; background-color: rgba(255, 189, 0, 0); margin-top: -58px; background-image: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-1304905567622442630&amp;guid=791036a2f42da9546b5e0529495d2e8f&amp;type=3#arrow-down@2x&quot;); -unity-background-image-tint-color: rgb(255, 241, 0);" />
-            </ui:VisualElement>
-            <ui:VisualElement name="GameOverContainer" style="flex-grow: 0; flex-shrink: 0; align-items: center; width: 20%; visibility: hidden;">
-                <ui:Label tabindex="-1" text="GAME OVER" parse-escape-sequences="true" display-tooltip-when-elided="true" name="GameOverText" style="width: auto; font-size: 26px; color: rgb(255, 239, 0); -unity-text-align: upper-center; align-items: center;" />
-                <ui:Button text="Play Again" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+    <ui:VisualElement name="Container" style="flex-grow: 1; align-items: center; justify-content: flex-end; width: 100%; height: 100%;">
+        <ui:VisualElement name="BottomPanel" style="flex-grow: 0; width: 100%; height: 28%; background-color: rgb(127, 103, 103); border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px; flex-shrink: 0; justify-content: center; align-items: center; flex-direction: row; -unity-background-image-tint-color: rgb(255, 225, 0);">
+            <ui:VisualElement name="Children" style="flex-grow: 1; max-width: 960px; width: 100%; flex-direction: row; align-items: center; align-self: center;">
+                <ui:VisualElement name="LeftContainer" style="flex-grow: 1; width: auto; align-items: center; flex-shrink: 0; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 8px; padding-right: 8px; padding-bottom: 8px; padding-left: 8px;">
+                    <ui:ProgressBar value="50" title="Hunger" low-value="0" high-value="100" name="HungerBar" style="width: 100%;" />
+                    <ui:Label tabindex="-1" text="00:00" parse-escape-sequences="true" display-tooltip-when-elided="true" name="TimerLabel" style="color: rgb(255, 255, 255); -unity-font-style: normal; font-size: 32px;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="GrabBar" style="flex-grow: 0; background-color: rgb(35, 35, 35); width: 55%; height: 55px; flex-shrink: 0; border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; visibility: visible; margin-top: 17px;">
+                    <ui:VisualElement name="GrabZone" style="flex-grow: 0; flex-shrink: 0; height: 100%; width: 40%; background-color: rgb(177, 180, 180); margin-left: 0; visibility: visible;" />
+                    <ui:VisualElement name="GrabPointer" style="flex-grow: 0; position: absolute; flex-shrink: 0; width: 90px; height: 121px; background-color: rgba(255, 189, 0, 0); margin-top: -70px; background-image: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-1304905567622442630&amp;guid=791036a2f42da9546b5e0529495d2e8f&amp;type=3#arrow-down@2x&quot;); -unity-background-image-tint-color: rgb(255, 241, 0); visibility: visible;" />
+                </ui:VisualElement>
+                <ui:VisualElement name="GameOverContainer" style="flex-grow: 1; flex-shrink: 0; align-items: center; width: auto; visibility: visible;">
+                    <ui:Label tabindex="-1" text="GAME&#10;OVER" parse-escape-sequences="true" display-tooltip-when-elided="true" name="GameOverText" style="width: auto; font-size: 26px; color: rgb(255, 239, 0); -unity-text-align: upper-center; align-items: center;" />
+                    <ui:Button text="Play Again" parse-escape-sequences="true" display-tooltip-when-elided="true" />
+                </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>

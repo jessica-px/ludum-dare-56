@@ -9,8 +9,6 @@ public class GrabBarController : MonoBehaviour
     private VisualElement grabPointer;
     private VisualElement grabZone;
 
-    private float GrabBarWidth = 550; // harcoded widths here bc I cannot figure out how to read this properly
-    private float GrabPointerWidth = 80;
     private float GrabPointerPercent = 0;
     private float GrabPointerSpeed = .005f;
 
@@ -39,8 +37,8 @@ public class GrabBarController : MonoBehaviour
         }
         GrabPointerPercent = newPercent;
 
-        float centerOffset = GrabPointerWidth / 2;
-        grabPointer.style.left = GrabBarWidth * GrabPointerPercent - centerOffset;
+        float centerOffset = grabPointer.resolvedStyle.width / 2;
+        grabPointer.style.left = grabBar.resolvedStyle.width * GrabPointerPercent - centerOffset; 
     }
 
     public void HideGrabBar()
@@ -55,8 +53,8 @@ public class GrabBarController : MonoBehaviour
         {
             grabZone.style.visibility = Visibility.Visible;
             grabPointer.style.visibility = Visibility.Visible;
-            grabZone.style.marginLeft = GrabBarWidth * gameManager.TargetCreature.sensitivityStart;
-            grabZone.style.width = GrabBarWidth * gameManager.TargetCreature.sensitivityAmount;
+            grabZone.style.marginLeft = grabBar.resolvedStyle.width * gameManager.TargetCreature.sensitivityStart;
+            grabZone.style.width = grabBar.resolvedStyle.width * gameManager.TargetCreature.sensitivityAmount;
             GrabPointerPercent = 0;
         }
     }
@@ -70,12 +68,10 @@ public class GrabBarController : MonoBehaviour
 
             if (grabPointerIsAboveMin && grabPointerIsBelowMax)
             {
-                Debug.Log("pointer in zone");
                 return true;
             }
             else
             {
-                Debug.Log("pointer not in zone");
                 return false;
             }
         }
