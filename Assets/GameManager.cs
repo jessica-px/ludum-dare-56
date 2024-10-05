@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
+    public bool IsGameOver { get; private set; } = false;
     public Creature? TargetCreature { get; private set; } = null;
     private VisualElement uiRoot;
     private VisualElement grabBar;
@@ -23,6 +24,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (IsGameOver)
+        {
+            return;
+        }
+
         if(Input.GetMouseButtonUp(0) && TargetCreature)
         {
             OnReleaseMouse();
@@ -38,14 +44,13 @@ public class GameManager : MonoBehaviour
 
     public void SetTargetCreature(Creature creature)
     {
-        if (!TargetCreature)
+        if (!TargetCreature && !IsGameOver)
         {
             TargetCreature = creature;
             creature.SetState(CreatureState.Grabbing);
             grabBarController.ShowGrabBar();
         }
     }
-
  
     public void OnReleaseMouse()
     {
@@ -57,6 +62,23 @@ public class GameManager : MonoBehaviour
         {
             TargetCreature.SetState(CreatureState.GrabbedMiss);
         }
+        UnsetTargetCreature();
+    }
+
+    private void UnsetTargetCreature()
+    {
+        if (TargetCreature)
+        {
+            TargetCreature.SetState(CreatureState.Idle);
+        }
         TargetCreature = null;
+    }
+
+    public void OnGameOver()
+    {
+        IsGameOver = true;
+        grabBarController.HideGrabBar();
+        UnsetTargetCreature();
+        Debug.Log("Game over!");
     }
 }
