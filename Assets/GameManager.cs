@@ -6,6 +6,10 @@ using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
+
+    public Texture2D cursorTexture;
+    public Texture2D cursorTextureGreen;
+
     public bool IsGameOver { get; private set; } = false;
     public Creature? TargetCreature { get; private set; } = null;
     private VisualElement uiRoot;
@@ -21,6 +25,7 @@ public class GameManager : MonoBehaviour
     {
         grabBarController = gameObject.GetComponent<GrabBarController>();
         hungerBarController = gameObject.GetComponent<HungerBarController>();
+        SetCursor(false);
     }
 
     // Update is called once per frame
@@ -56,6 +61,7 @@ public class GameManager : MonoBehaviour
  
     public void OnReleaseMouse()
     {
+        SetCursor(false);
         grabBarController.HideGrabBar();
         if (grabBarController.IsGrabPointerInZone())
         {
@@ -83,5 +89,17 @@ public class GameManager : MonoBehaviour
         grabBarController.HideGrabBar();
         UnsetTargetCreature();
         Debug.Log("Game over!");
+    }
+
+    public void SetCursor(bool isGreen)
+    {
+        Vector2 hotspot = new Vector2(cursorTexture.width / 2, cursorTexture.height / 2);
+        if (isGreen)
+        {
+            UnityEngine.Cursor.SetCursor(cursorTextureGreen, hotspot, CursorMode.ForceSoftware);
+        } else
+        {
+            UnityEngine.Cursor.SetCursor(cursorTexture, hotspot, CursorMode.ForceSoftware);
+        }
     }
 }

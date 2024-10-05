@@ -53,11 +53,6 @@ public class Creature : MonoBehaviour
         rigidbody.velocity = Vector3.ClampMagnitude(rigidbody.velocity, maxSpeed);
     }
 
-    private void OnMouseDown()
-    {
-        gameManager.SetTargetCreature(this);
-    }
-
     public void SetState(CreatureState newState)
     {
         switch (newState)
@@ -73,4 +68,22 @@ public class Creature : MonoBehaviour
                 break;
         }
     }
+
+    private void OnMouseEnter()
+    {
+        Debug.Log("on enter");
+        gameManager.SetCursor(true);
+    }
+
+    private void OnMouseExit()
+    {
+        gameManager.SetCursor(false);
+    }
+
+    private void OnMouseDown()
+    {
+        gameManager.SetTargetCreature(this);
+    }
+
+
 }

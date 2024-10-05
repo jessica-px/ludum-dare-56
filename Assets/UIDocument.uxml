@@ -4,7 +4,7 @@
             <ui:VisualElement name="LeftContainer" style="flex-grow: 1; width: 55px; align-items: center;">
                 <ui:ProgressBar value="50" title="Hunger" low-value="0" high-value="100" name="HungerBar" style="width: 197px;" />
             </ui:VisualElement>
-            <ui:VisualElement name="GrabBar" style="flex-grow: 0; background-color: rgb(213, 200, 187); width: 300px; height: 55px; flex-shrink: 0; border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; visibility: visible;">
+            <ui:VisualElement name="GrabBar" style="flex-grow: 0; background-color: rgb(213, 200, 187); width: 400px; height: 55px; flex-shrink: 0; border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; visibility: visible;">
                 <ui:VisualElement name="GrabZone" style="flex-grow: 0; flex-shrink: 0; height: 100%; width: 40%; background-color: rgb(165, 94, 46); margin-left: 0;" />
                 <ui:VisualElement name="GrabPointer" style="flex-grow: 0; position: absolute; flex-shrink: 0; width: 80px; height: 97px; background-color: rgba(255, 189, 0, 0); margin-top: -58px; background-image: url(&quot;project://database/Assets/UI%20Toolkit/UnityThemes/UnityDefaultRuntimeTheme.tss?fileID=-1304905567622442630&amp;guid=791036a2f42da9546b5e0529495d2e8f&amp;type=3#arrow-down@2x&quot;); -unity-background-image-tint-color: rgb(255, 241, 0);" />
             </ui:VisualElement>
