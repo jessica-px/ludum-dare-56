@@ -9,10 +9,10 @@ public class GrabBarController : MonoBehaviour
     private VisualElement grabPointer;
     private VisualElement grabZone;
 
-    private float GrabBarWidth = 400; // harcoded widths here bc I cannot figure out how to read this properly
+    private float GrabBarWidth = 550; // harcoded widths here bc I cannot figure out how to read this properly
     private float GrabPointerWidth = 80;
     private float GrabPointerPercent = 0;
-    private float GrabPointerSpeed = .008f;
+    private float GrabPointerSpeed = .005f;
 
     void Start()
     {

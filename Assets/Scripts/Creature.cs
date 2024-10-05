@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public enum CreatureState
 {
@@ -45,8 +46,9 @@ public class Creature : MonoBehaviour
 
         rb.velocity = new Vector2(8.0f, 8.0f);
         spriteRenderer.color = color;
-        float maxSensitivityStart = 1 - sensitivityAmount;
-        sensitivityStart = Random.Range(0, maxSensitivityStart);
+        float sensitivityBuffer = .15f; // buffer to keep it from the very edge of the bar
+        float maxSensitivityStart = 1 - sensitivityAmount - sensitivityBuffer;
+        sensitivityStart = Random.Range(sensitivityBuffer, maxSensitivityStart);
     }
 
     // Update is called once per frame
