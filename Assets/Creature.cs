@@ -73,6 +73,7 @@ public class Creature : MonoBehaviour
             case CreatureState.GrabbedPop:
             case CreatureState.GrabbedSuccess:
                 Destroy(gameObject);
+                gameManager.currCreatureCount = Mathf.Max(0, gameManager.currCreatureCount - 1);
                 break;
         }
     }

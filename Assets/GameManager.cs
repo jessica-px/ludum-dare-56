@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
     private float secondsSinceLastSpawn = 0;
     private float spawnDelay = 2;
     private int maxCreatureCount = 6;
-    private int currCreatureCount = 0;
+    public int currCreatureCount = 0;
 
     // Start is called before the first frame update
     void Start()
