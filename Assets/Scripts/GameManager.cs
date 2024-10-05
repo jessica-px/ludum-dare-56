@@ -5,6 +5,7 @@ using UnityEngine.UIElements;
 public enum GamePhase
 {
     Early,
+    EarlyMid,
     Mid,
     Late,
     End
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
     public GameObject CreaturePrefab;
     public GameObject SlowCreaturePrefab;
     public GameObject FastCreaturePrefab;
+    public GameObject ExtraFastCreaturePrefab;
     public Creature? TargetCreature { get; private set; } = null;
     private VisualElement uiRoot;
     private VisualElement gameOverContainer;
@@ -82,7 +84,7 @@ public class GameManager : MonoBehaviour
     void SpawnCreature()
     {
         // we'll want to check for collisions here
-        Vector3 randomVector = new Vector3(Random.Range(-2f, 2f), Random.Range(-3f, 3f), 0);
+        Vector3 randomVector = new Vector3(Random.Range(-4f, 4f), Random.Range(-1f, 4f), 0);
         Instantiate(GetRandomCreature(), randomVector, Quaternion.identity);
         secondsSinceLastSpawn = 0;
         currCreatureCount++;
@@ -91,22 +93,27 @@ public class GameManager : MonoBehaviour
 
     public GamePhase GetGamePhase()
     {
-        // first 20 seconds
-        if (timerController.TimeElapsed < 20)
+        // first 10 seconds
+        if (timerController.TimeElapsed < 10)
         {
             return GamePhase.Early;
         }
-        // 20 - 40 seconds
-        else if (timerController.TimeElapsed < 40)
+        // 10 - 40  seconds
+        if (timerController.TimeElapsed < 40)
         {
-            return GamePhase.Mid;
+            return GamePhase.EarlyMid;
         }
         // 40 - 60 seconds
         else if (timerController.TimeElapsed < 60)
         {
+            return GamePhase.Mid;
+        }
+        // 60 - 80 seconds
+        else if (timerController.TimeElapsed < 80)
+        {
             return GamePhase.Late;
         }
-        // >60 seconds
+        // >80 seconds
         else
         {
             return GamePhase.End;
@@ -119,16 +126,19 @@ public class GameManager : MonoBehaviour
         switch (phase)
         {
             case GamePhase.Early:
-                spawnDelay = 2;
+                spawnDelay = .75f;
+                break;
+            case GamePhase.EarlyMid:
+                spawnDelay = .6f;
                 break;
             case GamePhase.Mid:
-                spawnDelay = 1.5f;
+                spawnDelay = .5f;
                 break;
             case GamePhase.Late:
-                spawnDelay = 1.25f;
+                spawnDelay = .4f;
                 break;
             case GamePhase.End:
-                spawnDelay = 1;
+                spawnDelay = .3f;
                 break;
         }
     }
@@ -141,23 +151,23 @@ public class GameManager : MonoBehaviour
         if (phase == GamePhase.Early)
         {
             return SlowCreaturePrefab;
-        } 
+        }
 
-        // mid game: 50% odds slow vs normal
-        else if (phase == GamePhase.Mid)
+        // early mid game: 50% odds slow vs normal
+        else if (phase == GamePhase.EarlyMid)
         {
             float percent = Random.Range(0, 1f);
             if (percent < .5)
             {
                 return SlowCreaturePrefab;
-            } else
+            }
+            else
             {
                 return CreaturePrefab;
             }
         }
-
-        // late game: 50% normal, 25% slow, 25% fast
-        else if (phase == GamePhase.Late)
+        // mid game: 50% normal, 25% slow, 25% fast
+        else if (phase == GamePhase.Mid)
         {
             float percent = Random.Range(0, 1f);
             if (percent < .5)
@@ -173,9 +183,8 @@ public class GameManager : MonoBehaviour
                 return FastCreaturePrefab;
             }
         }
-
-        // end game: 40% normal, 20% slow, 40% fast
-        else 
+        // late game: 40% normal, 20% slow, 40% fast
+        else if (phase == GamePhase.Late)
         {
             float percent = Random.Range(0, 1f);
             if (percent < .4)
@@ -189,6 +198,28 @@ public class GameManager : MonoBehaviour
             else
             {
                 return FastCreaturePrefab;
+            }
+        }
+
+        // end game: 20% normal, 20% slow, 40% fast, 20% extra fast
+        else 
+        {
+            float percent = Random.Range(0, 1f);
+            if (percent < .2)
+            {
+                return CreaturePrefab;
+            }
+            else if (percent < .4)
+            {
+                return SlowCreaturePrefab;
+            }
+            else if (percent < .8)
+            {
+                return FastCreaturePrefab;
+            }
+            else
+            {
+                return ExtraFastCreaturePrefab;
             }
         }
     }

@@ -574,9 +574,10 @@ MonoBehaviour:
   cursorTexture: {fileID: 2800000, guid: 0a1b6a006d588764aa4d333c89406d3e, type: 3}
   cursorTextureGreen: {fileID: 2800000, guid: 4c417c3bafb6b6b47a2cec564f228f7f, type: 3}
   initialCreatureCount: 3
-  CreaturePrefab: {fileID: 7079843347043685422, guid: 52875f523ffe4a642ac0371355814271, type: 3}
-  SlowCreaturePrefab: {fileID: 1252069611328997349, guid: d9873655c0c91e7448d35bd61513fd0f, type: 3}
-  FastCreaturePrefab: {fileID: 4784206520465269063, guid: cd0c161be61d69848a5f505b1e7bc104, type: 3}
+  CreaturePrefab: {fileID: 1252069611328997349, guid: d9873655c0c91e7448d35bd61513fd0f, type: 3}
+  SlowCreaturePrefab: {fileID: 3484551575775792083, guid: 906caa2c9d90b934fb2f1ad0eb1554a2, type: 3}
+  FastCreaturePrefab: {fileID: 7079843347043685422, guid: 52875f523ffe4a642ac0371355814271, type: 3}
+  ExtraFastCreaturePrefab: {fileID: 4784206520465269063, guid: cd0c161be61d69848a5f505b1e7bc104, type: 3}
   spawnDelay: 2
   currCreatureCount: 0
 --- !u!4 &1405003760

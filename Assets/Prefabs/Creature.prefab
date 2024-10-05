@@ -231,7 +231,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
-  maxSpeed: 8
+  maxSpeed: 7
+  startVeloctyRange: 5
   color: {r: 1, g: 1, b: 1, a: 1}
   hungerValue: 20
   successAudio: {fileID: 8300000, guid: e7d8173f05f02224598f2bb4f89b15b3, type: 3}

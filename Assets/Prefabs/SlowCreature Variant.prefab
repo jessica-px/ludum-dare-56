@@ -38,7 +38,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5825072813380259497, guid: 52875f523ffe4a642ac0371355814271, type: 3}
       propertyPath: maxSpeed
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5825072813380259497, guid: 52875f523ffe4a642ac0371355814271, type: 3}
       propertyPath: hungerValue
@@ -47,6 +47,10 @@ PrefabInstance:
     - target: {fileID: 5825072813380259497, guid: 52875f523ffe4a642ac0371355814271, type: 3}
       propertyPath: sensitivityAmount
       value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825072813380259497, guid: 52875f523ffe4a642ac0371355814271, type: 3}
+      propertyPath: startVeloctyRange
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6065526074345478552, guid: 52875f523ffe4a642ac0371355814271, type: 3}
       propertyPath: m_LocalPosition.x

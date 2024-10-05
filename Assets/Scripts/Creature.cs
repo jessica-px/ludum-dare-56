@@ -21,6 +21,7 @@ public class Creature : MonoBehaviour
 
     public bool IsHovered { get; private set; } = false;
     public float maxSpeed = 2;
+    public float startVeloctyRange;
     public Color color;
     public float hungerValue = 10;
 
@@ -44,14 +45,13 @@ public class Creature : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
         audioSource = gameObject.GetComponent<AudioSource>();
 
-        rb.velocity = new Vector2(8.0f, 8.0f);
         spriteRenderer.color = color;
         float sensitivityBuffer = .15f; // buffer to keep it from the very edge of the bar
         float maxSensitivityStart = 1 - sensitivityAmount - sensitivityBuffer;
         sensitivityStart = Random.Range(sensitivityBuffer, maxSensitivityStart);
 
         // start by flinging it in a random direction
-        Vector2 randomVelocity = new Vector2(Random.Range(-8f, 8f), Random.Range(-8f, 8f));
+        Vector2 randomVelocity = new Vector2(Random.Range(-startVeloctyRange, startVeloctyRange), 3);
         rb.velocity = randomVelocity;
     }
 

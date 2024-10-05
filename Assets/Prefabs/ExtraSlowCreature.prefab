@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &2316049195792020841
+--- !u!1001 &5916381021365297149
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,51 +10,51 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1562029753275983691, guid: 52875f523ffe4a642ac0371355814271, type: 3}
       propertyPath: m_Mass
-      value: 0.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1899664225943900941, guid: 52875f523ffe4a642ac0371355814271, type: 3}
       propertyPath: m_Color.b
-      value: 0.6509433
+      value: 0.4392157
       objectReference: {fileID: 0}
     - target: {fileID: 1899664225943900941, guid: 52875f523ffe4a642ac0371355814271, type: 3}
       propertyPath: m_Color.g
-      value: 1
+      value: 0.4392157
       objectReference: {fileID: 0}
     - target: {fileID: 1899664225943900941, guid: 52875f523ffe4a642ac0371355814271, type: 3}
       propertyPath: m_Color.r
-      value: 0.97760147
+      value: 0.4392157
       objectReference: {fileID: 0}
     - target: {fileID: 5825072813380259497, guid: 52875f523ffe4a642ac0371355814271, type: 3}
       propertyPath: color.b
-      value: 0.6509804
+      value: 0.44025147
       objectReference: {fileID: 0}
     - target: {fileID: 5825072813380259497, guid: 52875f523ffe4a642ac0371355814271, type: 3}
       propertyPath: color.g
-      value: 1
+      value: 0.44025147
       objectReference: {fileID: 0}
     - target: {fileID: 5825072813380259497, guid: 52875f523ffe4a642ac0371355814271, type: 3}
       propertyPath: color.r
-      value: 0.9764706
+      value: 0.44025147
       objectReference: {fileID: 0}
     - target: {fileID: 5825072813380259497, guid: 52875f523ffe4a642ac0371355814271, type: 3}
       propertyPath: maxSpeed
-      value: 8
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5825072813380259497, guid: 52875f523ffe4a642ac0371355814271, type: 3}
-      propertyPath: hungerValue
-      value: 10
+      propertyPath: sensitivityAmount
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5825072813380259497, guid: 52875f523ffe4a642ac0371355814271, type: 3}
       propertyPath: startVeloctyRange
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6065526074345478552, guid: 52875f523ffe4a642ac0371355814271, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.847649
+      value: -2.723765
       objectReference: {fileID: 0}
     - target: {fileID: 6065526074345478552, guid: 52875f523ffe4a642ac0371355814271, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5503719
+      value: 1.0467273
       objectReference: {fileID: 0}
     - target: {fileID: 6065526074345478552, guid: 52875f523ffe4a642ac0371355814271, type: 3}
       propertyPath: m_LocalPosition.z
@@ -90,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7079843347043685422, guid: 52875f523ffe4a642ac0371355814271, type: 3}
       propertyPath: m_Name
-      value: FastCreature
+      value: ExtraSlowCreature
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
