@@ -7,7 +7,8 @@ public enum CreatureState
     Idle,
     Grabbing,
     GrabbedMiss,
-    GrabbedHit
+    GrabbedSuccess,
+    GrabbedPop
 }
 
 public class Creature : MonoBehaviour
@@ -16,7 +17,7 @@ public class Creature : MonoBehaviour
     private GameManager gameManager;
     private SpriteRenderer spriteRenderer;
 
-    private bool isSelected = false;
+    public bool IsHovered { get; private set; } = false;
     public float maxSpeed = 2;
     public Color color;
     public float hungerValue = 10;
@@ -58,12 +59,14 @@ public class Creature : MonoBehaviour
         switch (newState)
         {
             case CreatureState.Grabbing:
-                spriteRenderer.color = new Color(230, 252, 228);
+                spriteRenderer.color = Color.yellow;
                 break;
+            case CreatureState.GrabbedMiss:
             case CreatureState.Idle:
                 spriteRenderer.color = color;
                 break;
-            default:
+            case CreatureState.GrabbedPop:
+            case CreatureState.GrabbedSuccess:
                 Destroy(gameObject);
                 break;
         }
@@ -71,12 +74,13 @@ public class Creature : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        Debug.Log("on enter");
+        IsHovered = true;
         gameManager.SetCursor(true);
     }
 
     private void OnMouseExit()
     {
+        IsHovered = false;
         gameManager.SetCursor(false);
     }
 

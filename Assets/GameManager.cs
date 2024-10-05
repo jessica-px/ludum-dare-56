@@ -63,10 +63,13 @@ public class GameManager : MonoBehaviour
     {
         SetCursor(false);
         grabBarController.HideGrabBar();
-        if (grabBarController.IsGrabPointerInZone())
+        if (grabBarController.IsGrabPointerInZone() && TargetCreature.IsHovered)
         {
-            TargetCreature.SetState(CreatureState.GrabbedHit);
+            TargetCreature.SetState(CreatureState.GrabbedSuccess);
             hungerBarController.ChangeHunger(TargetCreature.hungerValue);
+        } else if (!grabBarController.IsGrabPointerInZone() && TargetCreature.IsHovered)
+        {
+            TargetCreature.SetState(CreatureState.GrabbedPop);
         } else
         {
             TargetCreature.SetState(CreatureState.GrabbedMiss);
