@@ -37,7 +37,7 @@ public class Creature : MonoBehaviour
 
     private void OnMouseDown()
     {
-        gameManager.SetGrabMode(true);
+        gameManager.SetTargetCreature(this);
         spriteRenderer.color = Color.green;
     }
 }
