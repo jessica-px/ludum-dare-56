@@ -49,6 +49,10 @@ public class Creature : MonoBehaviour
         float sensitivityBuffer = .15f; // buffer to keep it from the very edge of the bar
         float maxSensitivityStart = 1 - sensitivityAmount - sensitivityBuffer;
         sensitivityStart = Random.Range(sensitivityBuffer, maxSensitivityStart);
+
+        // start by flinging it in a random direction
+        Vector2 randomVelocity = new Vector2(Random.Range(-8f, 8f), Random.Range(-8f, 8f));
+        rb.velocity = randomVelocity;
     }
 
     // Update is called once per frame

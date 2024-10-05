@@ -9,7 +9,7 @@ public class TimerController : MonoBehaviour
     private GameManager gameManager;
     private VisualElement uiRoot;
     private Label timerLabel;
-    float timeElapsed = 0;
+    public float TimeElapsed { get; private set; } = 0;
 
     void Start()
     {
@@ -22,8 +22,8 @@ public class TimerController : MonoBehaviour
     {
         if (!gameManager.IsGameOver)
         {
-            timeElapsed += Time.deltaTime;
-            int secondsElapsed = Mathf.RoundToInt(timeElapsed);
+            TimeElapsed += Time.deltaTime;
+            int secondsElapsed = Mathf.RoundToInt(TimeElapsed);
             var timespan = TimeSpan.FromSeconds(secondsElapsed);
             timerLabel.text = timespan.ToString((@"mm\:ss"));
         }
@@ -31,6 +31,6 @@ public class TimerController : MonoBehaviour
 
     public void Reset()
     {
-        timeElapsed = 0;
+        TimeElapsed = 0;
     }
 }

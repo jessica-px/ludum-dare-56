@@ -233,7 +233,7 @@ MonoBehaviour:
   audioSource: {fileID: 0}
   maxSpeed: 8
   color: {r: 1, g: 1, b: 1, a: 1}
-  hungerValue: 10
+  hungerValue: 20
   successAudio: {fileID: 8300000, guid: e7d8173f05f02224598f2bb4f89b15b3, type: 3}
   missAudio: {fileID: 8300000, guid: eea78846cdc24204c9ec5fac6a3a0072, type: 3}
   deathAudio: {fileID: 8300000, guid: ff29f2d52b8a30348b0940d4778bfb03, type: 3}
