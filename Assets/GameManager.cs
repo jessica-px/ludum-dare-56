@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     private VisualElement uiRoot;
     private VisualElement grabBar;
     private VisualElement grabZone;
+    private float GrabBarWidth = 300; // harcoded here bc I cannot figure out how to read this properly
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +30,7 @@ public class GameManager : MonoBehaviour
 
         if (TargetCreature)
         {
-            Debug.Log("I'm in grab mode!");
+
         }
     }
 
@@ -37,6 +38,8 @@ public class GameManager : MonoBehaviour
     {
         TargetCreature = creature;
         grabBar.style.visibility = Visibility.Visible;
+        grabZone.style.marginLeft = GrabBarWidth * TargetCreature.sensitivityStart;
+        grabZone.style.width = GrabBarWidth * TargetCreature.sensitivityAmount;
     }
 
     public void UnsetTargetCreature()

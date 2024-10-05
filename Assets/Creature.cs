@@ -11,6 +11,12 @@ public class Creature : MonoBehaviour
     public float maxSpeed = 2;
     public Color color;
 
+    [Range(0, 1f)]
+    public float sensitivityStart;
+
+    [Range(0, 1f)]
+    public float sensitivityAmount;
+
     // Start is called before the first frame update
     void Start()
     {
