@@ -9,6 +9,7 @@ public class HungerBarController : MonoBehaviour
     public GameManager gameManager;
     private VisualElement uiRoot;
     private ProgressBar hungerBar;
+    private VisualElement hungerBarProgress;
     public float hungerValue { get; private set; } = 100;
     private float hungerRate = 0.01f;
 
@@ -18,6 +19,7 @@ public class HungerBarController : MonoBehaviour
         gameManager = gameObject.GetComponent<GameManager>();
         uiRoot = GameObject.Find("Canvas").GetComponent<UIDocument>().rootVisualElement;
         hungerBar = uiRoot.Q<ProgressBar>("HungerBar");
+        hungerBarProgress = uiRoot.Q(className: "unity-progress-bar__progress");
     }
 
 
@@ -37,6 +39,17 @@ public class HungerBarController : MonoBehaviour
         {
             gameManager.OnGameOver();
         }
+         else if (hungerValue <= 30)
+        {
+            hungerBarProgress.style.backgroundColor = Color.red;
+        } else if (hungerValue <= 70)
+        {
+            hungerBarProgress.style.backgroundColor = Color.yellow;
+        } else
+        {
+            hungerBarProgress.style.backgroundColor = Color.green;
+        }
+
     }
 
     public void ChangeHunger(float amount)

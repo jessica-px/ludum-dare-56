@@ -58,7 +58,7 @@ public class Creature : MonoBehaviour
         switch (newState)
         {
             case CreatureState.Grabbing:
-                spriteRenderer.color = Color.green;
+                spriteRenderer.color = new Color(230, 252, 228);
                 break;
             case CreatureState.Idle:
                 spriteRenderer.color = color;
