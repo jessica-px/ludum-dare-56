@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -13,9 +10,9 @@ public class GrabBarController : MonoBehaviour
     private VisualElement grabZone;
 
     private float GrabBarWidth = 400; // harcoded widths here bc I cannot figure out how to read this properly
-    private float GrabPointerWidth = 40;
+    private float GrabPointerWidth = 80;
     private float GrabPointerPercent = 0;
-    private float GrabPointerSpeed = .001f;
+    private float GrabPointerSpeed = .008f;
 
     void Start()
     {
