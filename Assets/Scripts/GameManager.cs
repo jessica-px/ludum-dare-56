@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -14,6 +15,7 @@ public class GameManager : MonoBehaviour
     public Creature? TargetCreature { get; private set; } = null;
     private VisualElement uiRoot;
     private VisualElement gameOverContainer;
+    private Button newGameButton;
 
     private GrabBarController grabBarController;
     private HungerBarController hungerBarController;
@@ -29,6 +31,9 @@ public class GameManager : MonoBehaviour
     {
         uiRoot = GameObject.Find("Canvas").GetComponent<UIDocument>().rootVisualElement;
         gameOverContainer = uiRoot.Q("GameOverContainer");
+        newGameButton = uiRoot.Q<Button>("NewGameButton");
+        newGameButton.clicked += () => StartNewGame();
+
         grabBarController = gameObject.GetComponent<GrabBarController>();
         hungerBarController = gameObject.GetComponent<HungerBarController>();
         timerController = gameObject.GetComponent<TimerController>();
@@ -76,6 +81,7 @@ public class GameManager : MonoBehaviour
         IsGameOver = false;
         timerController.Reset();
         hungerBarController.Reset();
+        gameOverContainer.style.visibility = Visibility.Hidden;
         SpawnCreature();
     }
 
