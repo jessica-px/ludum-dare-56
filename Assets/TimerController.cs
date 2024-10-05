@@ -28,4 +28,9 @@ public class TimerController : MonoBehaviour
             timerLabel.text = timespan.ToString((@"mm\:ss"));
         }
     }
+
+    public void Reset()
+    {
+        timeElapsed = 0;
+    }
 }

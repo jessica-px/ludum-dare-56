@@ -11,12 +11,21 @@ public class GameManager : MonoBehaviour
     public Texture2D cursorTextureGreen;
 
     public bool IsGameOver { get; private set; } = false;
+
+    public int initialCreatureCount = 3;
+    public GameObject CreaturePrefab;
     public Creature? TargetCreature { get; private set; } = null;
     private VisualElement uiRoot;
     private VisualElement gameOverContainer;
 
     private GrabBarController grabBarController;
     private HungerBarController hungerBarController;
+    private TimerController timerController;
+
+    private float secondsSinceLastSpawn = 0;
+    private float spawnDelay = 2;
+    private int maxCreatureCount = 6;
+    private int currCreatureCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +34,9 @@ public class GameManager : MonoBehaviour
         gameOverContainer = uiRoot.Q("GameOverContainer");
         grabBarController = gameObject.GetComponent<GrabBarController>();
         hungerBarController = gameObject.GetComponent<HungerBarController>();
+        timerController = gameObject.GetComponent<TimerController>();
         SetCursor(false);
+        StartNewGame();
     }
 
     // Update is called once per frame
@@ -36,7 +47,13 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        if(Input.GetMouseButtonUp(0) && TargetCreature)
+        secondsSinceLastSpawn += Time.deltaTime;
+        if (secondsSinceLastSpawn > spawnDelay && currCreatureCount < maxCreatureCount)
+        {
+            SpawnCreature();
+        }
+
+        if (Input.GetMouseButtonUp(0) && TargetCreature)
         {
             OnReleaseMouse();
         }
@@ -48,6 +65,22 @@ public class GameManager : MonoBehaviour
     }
 
 
+    void SpawnCreature()
+    {
+        // we'll want to check for collisions here
+        Vector3 randomVector = new Vector3(Random.Range(-4f, 4f), Random.Range(-5f, 5f), 0);
+        Instantiate(CreaturePrefab, randomVector, Quaternion.identity);
+        secondsSinceLastSpawn = 0;
+        currCreatureCount++;
+    }
+
+    public void StartNewGame()
+    {
+        IsGameOver = false;
+        timerController.Reset();
+        hungerBarController.Reset();
+        SpawnCreature();
+    }
 
     public void SetTargetCreature(Creature creature)
     {

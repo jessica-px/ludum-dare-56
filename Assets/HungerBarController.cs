@@ -11,7 +11,7 @@ public class HungerBarController : MonoBehaviour
     private ProgressBar hungerBar;
     private VisualElement hungerBarProgress;
     public float hungerValue { get; private set; } = 100;
-    private float hungerRate = 0.01f;
+    public float hungerRate;
 
     // Start is called before the first frame update
     void Start()
@@ -55,5 +55,10 @@ public class HungerBarController : MonoBehaviour
     public void ChangeHunger(float amount)
     {
         hungerValue += amount;
+    }
+
+    public void Reset()
+    {
+        hungerValue = 100;
     }
 }
