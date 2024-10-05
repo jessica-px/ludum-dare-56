@@ -13,9 +13,7 @@ public class GameManager : MonoBehaviour
     public bool IsGameOver { get; private set; } = false;
     public Creature? TargetCreature { get; private set; } = null;
     private VisualElement uiRoot;
-    private VisualElement grabBar;
-    private VisualElement grabPointer;
-    private VisualElement grabZone;
+    private VisualElement gameOverContainer;
 
     private GrabBarController grabBarController;
     private HungerBarController hungerBarController;
@@ -23,6 +21,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        uiRoot = GameObject.Find("Canvas").GetComponent<UIDocument>().rootVisualElement;
+        gameOverContainer = uiRoot.Q("GameOverContainer");
         grabBarController = gameObject.GetComponent<GrabBarController>();
         hungerBarController = gameObject.GetComponent<HungerBarController>();
         SetCursor(false);
@@ -91,6 +91,7 @@ public class GameManager : MonoBehaviour
         IsGameOver = true;
         grabBarController.HideGrabBar();
         UnsetTargetCreature();
+        gameOverContainer.style.visibility = Visibility.Visible;
         Debug.Log("Game over!");
     }
 
