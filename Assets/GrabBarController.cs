@@ -58,6 +58,7 @@ public class GrabBarController : MonoBehaviour
             grabBar.style.visibility = Visibility.Visible;
             grabZone.style.marginLeft = GrabBarWidth * gameManager.TargetCreature.sensitivityStart;
             grabZone.style.width = GrabBarWidth * gameManager.TargetCreature.sensitivityAmount;
+            GrabPointerPercent = 0;
         }
     }
 
