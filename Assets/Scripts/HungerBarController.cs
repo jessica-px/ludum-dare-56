@@ -54,7 +54,7 @@ public class HungerBarController : MonoBehaviour
 
     public void ChangeHunger(float amount)
     {
-        hungerValue += amount;
+        hungerValue = Mathf.Min(hungerValue + amount, 100);
     }
 
     public void Reset()
