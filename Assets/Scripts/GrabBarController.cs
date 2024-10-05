@@ -10,7 +10,7 @@ public class GrabBarController : MonoBehaviour
     private VisualElement grabZone;
 
     private float GrabPointerPercent = 0;
-    private float GrabPointerSpeed = .005f;
+    private float GrabPointerSpeed = 1f;
 
     void Start()
     {
@@ -24,7 +24,7 @@ public class GrabBarController : MonoBehaviour
 
     public void UpdateGrabBarPointer()
     {
-        float newPercent = GrabPointerPercent + GrabPointerSpeed;
+        float newPercent = GrabPointerPercent + GrabPointerSpeed * Time.deltaTime;
         if (newPercent > 1)
         {
             newPercent = 1;

@@ -33,7 +33,7 @@ public class HungerBarController : MonoBehaviour
 
     void UpdateHunger()
     {
-        hungerValue -= hungerRate;
+        hungerValue -= hungerRate * Time.deltaTime;
         hungerBar.value = hungerValue;
         if (hungerValue <= 0)
         {

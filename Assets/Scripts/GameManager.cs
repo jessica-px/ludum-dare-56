@@ -118,6 +118,9 @@ public class GameManager : MonoBehaviour
         GamePhase phase = GetGamePhase();
         switch (phase)
         {
+            case GamePhase.Early:
+                spawnDelay = 2;
+                break;
             case GamePhase.Mid:
                 spawnDelay = 1.5f;
                 break;
@@ -125,7 +128,7 @@ public class GameManager : MonoBehaviour
                 spawnDelay = 1.25f;
                 break;
             case GamePhase.End:
-                spawnDelay = 1f;
+                spawnDelay = 1;
                 break;
         }
     }
@@ -197,6 +200,7 @@ public class GameManager : MonoBehaviour
         hungerBarController.Reset();
         gameOverContainer.style.visibility = Visibility.Hidden;
         SpawnCreature();
+        currCreatureCount = 0;
     }
 
     public void SetTargetCreature(Creature creature)
