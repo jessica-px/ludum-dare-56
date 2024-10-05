@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -102,7 +99,7 @@ public class GameManager : MonoBehaviour
             hungerBarController.ChangeHunger(TargetCreature.hungerValue);
         } else if (!grabBarController.IsGrabPointerInZone() && TargetCreature.IsHovered)
         {
-            TargetCreature.SetState(CreatureState.GrabbedPop);
+            TargetCreature.SetState(CreatureState.GrabbedDeath);
         } else
         {
             TargetCreature.SetState(CreatureState.GrabbedMiss);
