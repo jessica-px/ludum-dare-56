@@ -60,10 +60,14 @@ public class GameManager : MonoBehaviour
 
     public void SetTargetCreature(Creature creature)
     {
-        TargetCreature = creature;
-        grabBar.style.visibility = Visibility.Visible;
-        grabZone.style.marginLeft = GrabBarWidth * TargetCreature.sensitivityStart;
-        grabZone.style.width = GrabBarWidth * TargetCreature.sensitivityAmount;
+        if (!TargetCreature)
+        {
+            TargetCreature = creature;
+            creature.SetState(CreatureState.Grabbing);
+            grabBar.style.visibility = Visibility.Visible;
+            grabZone.style.marginLeft = GrabBarWidth * TargetCreature.sensitivityStart;
+            grabZone.style.width = GrabBarWidth * TargetCreature.sensitivityAmount;
+        }
     }
 
     public bool IsGrabPointerInZone(Creature creature)
@@ -85,7 +89,13 @@ public class GameManager : MonoBehaviour
     public void OnReleaseMouse()
     {
         grabBar.style.visibility = Visibility.Hidden;
-        IsGrabPointerInZone(TargetCreature);
+        if (IsGrabPointerInZone(TargetCreature))
+        {
+            TargetCreature.SetState(CreatureState.GrabbedHit);
+        } else
+        {
+            TargetCreature.SetState(CreatureState.GrabbedMiss);
+        }
         TargetCreature = null;
     }
 }

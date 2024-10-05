@@ -2,14 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum CreatureState
+{
+    Idle,
+    Grabbing,
+    GrabbedMiss,
+    GrabbedHit
+}
+
 public class Creature : MonoBehaviour
 {
     private Rigidbody2D rigidbody;
     private GameManager gameManager;
     private SpriteRenderer spriteRenderer;
+
     private bool isSelected = false;
     public float maxSpeed = 2;
     public Color color;
+
+    public CreatureState State { get; private set; } = CreatureState.Idle;
 
     [Range(0, 1f)]
     public float sensitivityStart;
@@ -44,6 +55,21 @@ public class Creature : MonoBehaviour
     private void OnMouseDown()
     {
         gameManager.SetTargetCreature(this);
-        spriteRenderer.color = Color.green;
+    }
+
+    public void SetState(CreatureState newState)
+    {
+        switch (newState)
+        {
+            case CreatureState.Grabbing:
+                spriteRenderer.color = Color.green;
+                break;
+            case CreatureState.Idle:
+                spriteRenderer.color = color;
+                break;
+            default:
+                Destroy(gameObject);
+                break;
+        }
     }
 }
