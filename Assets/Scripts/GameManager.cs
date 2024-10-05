@@ -114,6 +114,7 @@ public class GameManager : MonoBehaviour
             TargetCreature.SetState(CreatureState.Idle);
         }
         TargetCreature = null;
+        grabBarController.HideGrabBar();
     }
 
     public void OnGameOver()
