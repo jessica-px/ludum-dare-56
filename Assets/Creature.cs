@@ -13,7 +13,7 @@ public enum CreatureState
 
 public class Creature : MonoBehaviour
 {
-    private Rigidbody2D rigidbody;
+    private Rigidbody2D rb;
     private GameManager gameManager;
     private SpriteRenderer spriteRenderer;
 
@@ -35,9 +35,9 @@ public class Creature : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        rigidbody = gameObject.GetComponent<Rigidbody2D>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
 
-        rigidbody.velocity = new Vector2(8.0f, 8.0f);
+        rb.velocity = new Vector2(8.0f, 8.0f);
         spriteRenderer.color = color;
     }
 
@@ -51,7 +51,12 @@ public class Creature : MonoBehaviour
         }
 
         // Keep max speed clamped
-        rigidbody.velocity = Vector3.ClampMagnitude(rigidbody.velocity, maxSpeed);
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+
+        if (gameManager.IsGameOver)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void SetState(CreatureState newState)
