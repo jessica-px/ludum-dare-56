@@ -73,12 +73,12 @@ public class GrabBarController : MonoBehaviour
 
             if (grabPointerIsAboveMin && grabPointerIsBelowMax)
             {
-                Debug.Log("hit");
+                Debug.Log("pointer in zone");
                 return true;
             }
             else
             {
-                Debug.Log("miss");
+                Debug.Log("pointer not in zone");
                 return false;
             }
         }
