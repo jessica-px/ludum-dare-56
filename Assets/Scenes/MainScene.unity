@@ -1814,8 +1814,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fefd67abd24c7794f83880f2451f44dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorTexture: {fileID: 2800000, guid: 0a1b6a006d588764aa4d333c89406d3e, type: 3}
-  cursorTextureGreen: {fileID: 2800000, guid: 4c417c3bafb6b6b47a2cec564f228f7f, type: 3}
+  cursorTexture: {fileID: 2800000, guid: e568cf3716ee718449f776408d66573a, type: 3}
+  cursorTextureGreen: {fileID: 2800000, guid: 663b7797431d687469ef45175d8c4958, type: 3}
+  cursorTextureFocus: {fileID: 2800000, guid: 980a4484f9f828c4fbf55f0c69e840eb, type: 3}
+  cursorTextureFocusGreen: {fileID: 2800000, guid: 4dee5db619df0a34ca31bc1171d04c6d, type: 3}
+  cursorTextureFocusRed: {fileID: 2800000, guid: 0412438d5f9e29248b0b56ae89da0817, type: 3}
   initialCreatureCount: 3
   CreaturePrefab: {fileID: 7079843347043685422, guid: 52875f523ffe4a642ac0371355814271, type: 3}
   SlowCreaturePrefab: {fileID: 6616758776748775203, guid: 384cf8adcd2875c4f88f4440b0d173e9, type: 3}

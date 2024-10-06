@@ -16,6 +16,9 @@ public class GameManager : MonoBehaviour
 
     public Texture2D cursorTexture;
     public Texture2D cursorTextureGreen;
+    public Texture2D cursorTextureFocus;
+    public Texture2D cursorTextureFocusGreen;
+    public Texture2D cursorTextureFocusRed;
 
     public bool IsGameOver { get; private set; } = false;
 
@@ -53,7 +56,7 @@ public class GameManager : MonoBehaviour
         hungerBarController = gameObject.GetComponent<HungerBarController>();
         timerController = gameObject.GetComponent<TimerController>();
         playerHandController = GameObject.Find("PlayerHand").GetComponent<PlayerHandController>();
-        SetCursor(false);
+        SetCursor(false, null);
         StartNewGame();
     }
 
@@ -243,7 +246,6 @@ public class GameManager : MonoBehaviour
  
     public void OnReleaseMouse()
     {
-        SetCursor(false);
         grabBarController.HideGrabBar();
 
         // Success
@@ -266,7 +268,7 @@ public class GameManager : MonoBehaviour
         // Fail (miss)
         else
         {
-            TargetCreature.SetState(CreatureState.GrabbedMiss);
+            TargetCreature.SetState(CreatureState.Idle);
             audioController.PlaySoundEffect(SoundEffect.Miss, 0);
         }
         UnsetTargetCreature();
@@ -280,6 +282,7 @@ public class GameManager : MonoBehaviour
         }
         TargetCreature = null;
         grabBarController.HideGrabBar();
+        SetCursor(false, null);
     }
 
     public void OnGameOver()
@@ -291,15 +294,40 @@ public class GameManager : MonoBehaviour
         Debug.Log("Game over!");
     }
 
-    public void SetCursor(bool isGreen)
+    public void SetCursor(bool creatureIsHovered, CreatureState? state)
     {
         Vector2 hotspot = new Vector2(cursorTexture.width / 2, cursorTexture.height / 2);
-        if (isGreen)
+
+        // focused reticule
+        if (TargetCreature)
         {
-            UnityEngine.Cursor.SetCursor(cursorTextureGreen, hotspot, CursorMode.ForceSoftware);
-        } else
+            // red if not over target
+            if (!creatureIsHovered || state != CreatureState.Targeted)
+            {
+                UnityEngine.Cursor.SetCursor(cursorTextureFocusRed, hotspot, CursorMode.ForceSoftware);
+            }
+            // green if over target and in grab zone
+            else if (grabBarController.IsGrabPointerInZone())
+            {
+                UnityEngine.Cursor.SetCursor(cursorTextureFocusGreen, hotspot, CursorMode.ForceSoftware);
+            }
+            // white if over target and not in grab zone
+            else
+            {
+                UnityEngine.Cursor.SetCursor(cursorTextureFocus, hotspot, CursorMode.ForceSoftware);
+            }
+        }
+
+        // normal reticule
+        else
         {
-            UnityEngine.Cursor.SetCursor(cursorTexture, hotspot, CursorMode.ForceSoftware);
+            if (creatureIsHovered)
+            {
+                UnityEngine.Cursor.SetCursor(cursorTextureGreen, hotspot, CursorMode.ForceSoftware);
+            } else
+            {
+                UnityEngine.Cursor.SetCursor(cursorTexture, hotspot, CursorMode.ForceSoftware);
+            }
         }
     }
 }

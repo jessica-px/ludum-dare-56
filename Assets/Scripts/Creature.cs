@@ -8,7 +8,6 @@ public enum CreatureState
 {
     Idle,
     Targeted,
-    GrabbedMiss,
     GrabbedSuccess,
     GrabbedDeath
 }
@@ -70,20 +69,19 @@ public class Creature : MonoBehaviour
         switch (newState)
         {
             case CreatureState.Targeted:
+                State = CreatureState.Targeted;
                 Glow.SetActive(true);
-                animator.SetBool("IsTargeted", true);
-                animator.SetBool("Targeted Layer.IsTargeted", true);
-                break;
-            case CreatureState.GrabbedMiss:
-                SetState(CreatureState.Idle);
                 break;
             case CreatureState.Idle:
                 Glow.SetActive(false);
+                State = CreatureState.Idle;
                 break;
             case CreatureState.GrabbedDeath:
+                State = CreatureState.GrabbedDeath;
                 DestroyCreature();
                 break;
             case CreatureState.GrabbedSuccess:
+                State = CreatureState.GrabbedSuccess;
                 DestroyCreature();
                 break;
         }
@@ -95,19 +93,16 @@ public class Creature : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnMouseEnter()
+    private void OnMouseOver()
     {
-        if (State == CreatureState.Idle)
-        {
-            IsHovered = true;
-            gameManager.SetCursor(true);
-        }
+        IsHovered = true;
+        gameManager.SetCursor(true, State);
     }
 
     private void OnMouseExit()
     {
         IsHovered = false;
-        gameManager.SetCursor(false);
+        gameManager.SetCursor(false, State);
     }
 
     private void OnMouseDown()
@@ -121,10 +116,8 @@ public class Creature : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collision");
         if (collision.gameObject.CompareTag("Wall"))
         {
-            Debug.Log("Wall");
             PlayBumpAnim();
         }
     }
