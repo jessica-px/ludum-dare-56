@@ -3,13 +3,14 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using static System.Runtime.CompilerServices.RuntimeHelpers;
 
-public enum GamePhase
+public enum GameLevel
 {
-    Early,
-    EarlyMid,
-    Mid,
-    Late,
-    End
+    One,
+    Two,
+    Three,
+    Four,
+    Five,
+    Six
 }
 
 public class GameManager : MonoBehaviour
@@ -104,132 +105,128 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public GamePhase GetGamePhase()
+    public GameLevel GetGameLevel()
     {
-        // first 10 seconds
-        if (timerController.TimeElapsed < 10)
+        // first 15 seconds
+        if (timerController.TimeElapsed < 15)
         {
-            return GamePhase.Early;
+            return GameLevel.One;
         }
-        // 10 - 30  seconds
+        // 15-30
         if (timerController.TimeElapsed < 30)
         {
-            return GamePhase.EarlyMid;
+            return GameLevel.Two;
         }
-        // 30 - 40 seconds
-        else if (timerController.TimeElapsed < 40)
+        // 30-45  seconds
+        if (timerController.TimeElapsed < 45)
         {
-            return GamePhase.Mid;
+            return GameLevel.Three;
         }
-        // 40 - 60 seconds
+        // 45-60 seconds
         else if (timerController.TimeElapsed < 60)
         {
-            return GamePhase.Late;
+            return GameLevel.Four;
         }
-        // >60 seconds
+        // 60-75 seconds
+        else if (timerController.TimeElapsed < 75)
+        {
+            return GameLevel.Five;
+        }
+        // >75 seconds
         else
         {
-            return GamePhase.End;
+            return GameLevel.Six;
         }
     }
 
     void UpdateSpawnDelay()
     {
-        GamePhase phase = GetGamePhase();
-        switch (phase)
+        GameLevel level = GetGameLevel();
+        switch (level)
         {
-            case GamePhase.Early:
+            case GameLevel.One:
                 spawnDelay = 2f;
                 break;
-            case GamePhase.EarlyMid:
+            case GameLevel.Three:
                 spawnDelay = 1.5f;
                 break;
-            case GamePhase.Mid:
-                spawnDelay = 1.25f;
-                break;
-            case GamePhase.Late:
-                spawnDelay = .9f;
-                break;
-            case GamePhase.End:
-                spawnDelay = .8f;
+            case GameLevel.Six:
+                spawnDelay = 1f;
                 break;
         }
     }
 
     GameObject GetRandomCreature()
     {
-        GamePhase phase = GetGamePhase();
+        GameLevel level = GetGameLevel();
+        float random = Random.Range(0, 1f);
 
-        // early game: slow creatures only
-        if (phase == GamePhase.Early)
+        switch (level)
         {
-            return SlowCreaturePrefab;
-        }
+            // slow creatures only
+            case GameLevel.One:
+                return SlowCreaturePrefab;
 
-        // early mid game: 50% odds slow vs normal
-        else if (phase == GamePhase.EarlyMid)
-        {
-            float percent = Random.Range(0, 1f);
-            if (percent < .5)
-            {
-                return SlowCreaturePrefab;
-            }
-            else
-            {
-                return CreaturePrefab;
-            }
-        }
-        // mid game: 50% normal, 25% slow, 25% fast
-        else if (phase == GamePhase.Mid)
-        {
-            float percent = Random.Range(0, 1f);
-            if (percent < .5)
-            {
-                return CreaturePrefab;
-            }
-            else if (percent < .75)
-            {
-                return SlowCreaturePrefab;
-            }
-            else
-            {
-                return FastCreaturePrefab;
-            }
-        }
-        // late game: 40% normal, 20% slow, 40% fast
-        else if (phase == GamePhase.Late)
-        {
-            float percent = Random.Range(0, 1f);
-            if (percent < .4)
-            {
-                return CreaturePrefab;
-            }
-            else if (percent < .6)
-            {
-                return SlowCreaturePrefab;
-            }
-            else
-            {
-                return FastCreaturePrefab;
-            }
-        }
+            // 75% odds slow, 25% normal
+            case GameLevel.Two: 
+                if (random < .75)
+                {
+                    return SlowCreaturePrefab;
+                }
+                else
+                {
+                    return CreaturePrefab;
+                }
 
-        // end game: 10% normal, 40% fast, 50% extra fast
-        else 
-        {
-            float percent = Random.Range(0, 1f);
-            if (percent < .1)
-            {
-                return CreaturePrefab;
-            }
-            else if (percent < .5)
-            {
-                return FastCreaturePrefab;
-            }
-            else
-            {
-                return ExtraFastCreaturePrefab;
-            }
+            // 50% odds slow, 50% normal
+            case GameLevel.Three:
+                if (random < .5)
+                {
+                    return SlowCreaturePrefab;
+                }
+                else
+                {
+                    return CreaturePrefab;
+                }
+
+            // 20% slow, 60% normal, 20% fast
+            case GameLevel.Four:
+                if (random < .2)
+                {
+                    return SlowCreaturePrefab;
+                }
+                else if (random < .8)
+                {
+                    return CreaturePrefab;
+                }
+                else
+                {
+                    return FastCreaturePrefab;
+                }
+            // 60 % normal, 40 % fast
+            case GameLevel.Five:
+                if (random < .6)
+                {
+                    return CreaturePrefab;
+                }
+                else
+                {
+                    return FastCreaturePrefab;
+                }
+            //  20% normal, 40% fast, 40% extra fast
+            default:
+                if (random < .2)
+                {
+                    return CreaturePrefab;
+                }
+                else if (random < .6)
+                {
+                    return FastCreaturePrefab;
+                }
+                else
+                {
+                    return ExtraFastCreaturePrefab;
+                }
         }
     }
 
