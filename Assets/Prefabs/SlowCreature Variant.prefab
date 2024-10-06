@@ -49,6 +49,10 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5825072813380259497, guid: 52875f523ffe4a642ac0371355814271, type: 3}
+      propertyPath: HasLargeGrabBar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5825072813380259497, guid: 52875f523ffe4a642ac0371355814271, type: 3}
       propertyPath: sensitivityAmount
       value: 0.4
       objectReference: {fileID: 0}

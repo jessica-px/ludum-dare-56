@@ -202,7 +202,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 2
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0.2
@@ -231,9 +231,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
   HasLargeGrabBar: 0
-  maxSpeed: 7
-  startVeloctyRange: 5
+  maxSpeed: 4
+  startVeloctyRange: 4
   color: {r: 1, g: 1, b: 1, a: 1}
   hungerValue: 20
   sensitivityStart: 0.25
-  sensitivityAmount: 0.25

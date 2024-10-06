@@ -12,6 +12,7 @@ public class GrabBarController : MonoBehaviour
 
     public GameObject pointer;
     public GameObject grabZoneShort;
+    public GameObject grabZoneLarge;
 
     void Start()
     {
@@ -57,6 +58,7 @@ public class GrabBarController : MonoBehaviour
     {
         spriteRenderer.enabled = false;
         grabZoneShort.SetActive(false);
+        grabZoneLarge.SetActive(false);
         pointer.SetActive(false);
     }
 
@@ -69,7 +71,12 @@ public class GrabBarController : MonoBehaviour
             spriteRenderer.enabled = true;
             float rotation = gameManager.TargetCreature.sensitivityStart * -180;
 
-            if (!gameManager.TargetCreature.HasLargeGrabBar)
+            if (gameManager.TargetCreature.HasLargeGrabBar)
+            {
+                grabZoneLarge.SetActive(true);
+                grabZoneLarge.transform.eulerAngles = new Vector3(0, 0, rotation);
+            }
+            else
             {
                 grabZoneShort.SetActive(true);
                 grabZoneShort.transform.eulerAngles = new Vector3(0, 0, rotation);
