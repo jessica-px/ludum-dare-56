@@ -18,6 +18,7 @@ public class Creature : MonoBehaviour
     private GameManager gameManager;
     private SpriteRenderer spriteRenderer;
     public AudioSource audioSource;
+    public bool HasLargeGrabBar;
 
     public bool IsHovered { get; private set; } = false;
     public float maxSpeed = 2;
@@ -25,13 +26,13 @@ public class Creature : MonoBehaviour
     public Color color;
     public float hungerValue = 10;
 
+    private float LargeSensitivity = .5f;
+    private float SmallSensitivity = .25f;
+
     public CreatureState State { get; private set; } = CreatureState.Idle;
 
     [Range(0, 1f)]
     public float sensitivityStart;
-
-    [Range(0, 1f)]
-    public float sensitivityAmount;
 
     // Start is called before the first frame update
     void Start()
@@ -43,7 +44,7 @@ public class Creature : MonoBehaviour
 
         spriteRenderer.color = color;
         float sensitivityBuffer = .15f; // buffer to keep it from the very edge of the bar
-        float maxSensitivityStart = 1 - sensitivityAmount - sensitivityBuffer;
+        float maxSensitivityStart = 1 - GetGrabSensitivity() - sensitivityBuffer;
         sensitivityStart = Random.Range(sensitivityBuffer, maxSensitivityStart);
 
         // start by flinging it in a random direction
@@ -131,5 +132,12 @@ public class Creature : MonoBehaviour
         
     }
 
-
+    public float GetGrabSensitivity()
+    {
+        if (HasLargeGrabBar)
+        {
+            return LargeSensitivity;
+        }
+        return SmallSensitivity;
+    }
 }

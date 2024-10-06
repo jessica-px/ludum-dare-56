@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
         newGameButton.clicked += () => StartNewGame();
 
         audioController = gameObject.GetComponent<AudioController>();
-        grabBarController = gameObject.GetComponent<GrabBarController>();
+        grabBarController = GameObject.Find("GrabBar").GetComponent<GrabBarController>();
         hungerBarController = gameObject.GetComponent<HungerBarController>();
         timerController = gameObject.GetComponent<TimerController>();
         playerHandController = GameObject.Find("PlayerHand").GetComponent<PlayerHandController>();
@@ -74,11 +74,6 @@ public class GameManager : MonoBehaviour
         if (Input.GetMouseButtonUp(0) && TargetCreature)
         {
             OnReleaseMouse();
-        }
-
-        if (TargetCreature)
-        {
-            grabBarController.UpdateGrabBarPointer();
         }
 
         UpdateSpawnDelay();

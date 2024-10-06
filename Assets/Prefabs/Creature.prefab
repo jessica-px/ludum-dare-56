@@ -230,6 +230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
+  HasLargeGrabBar: 0
   maxSpeed: 7
   startVeloctyRange: 5
   color: {r: 1, g: 1, b: 1, a: 1}
