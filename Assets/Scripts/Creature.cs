@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.SocialPlatforms;
 
 public enum CreatureState
 {
     Idle,
-    Grabbing,
+    Targeted,
     GrabbedMiss,
     GrabbedSuccess,
     GrabbedDeath
@@ -16,14 +17,13 @@ public class Creature : MonoBehaviour
 {
     private Rigidbody2D rb;
     private GameManager gameManager;
-    private SpriteRenderer spriteRenderer;
-    public AudioSource audioSource;
+    private Animator animator;
     public bool HasLargeGrabBar;
+    public GameObject Glow;
 
     public bool IsHovered { get; private set; } = false;
     public float maxSpeed = 2;
     public float startVeloctyRange;
-    public Color color;
     public float hungerValue = 10;
 
     private float LargeSensitivity = .5f;
@@ -38,14 +38,14 @@ public class Creature : MonoBehaviour
     void Start()
     {
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        animator = transform.GetComponentInChildren<Animator>();
         rb = gameObject.GetComponent<Rigidbody2D>();
-        audioSource = gameObject.GetComponent<AudioSource>();
 
-        spriteRenderer.color = color;
         float sensitivityBuffer = .15f; // buffer to keep it from the very edge of the bar
         float maxSensitivityStart = 1 - GetGrabSensitivity() - sensitivityBuffer;
         sensitivityStart = Random.Range(sensitivityBuffer, maxSensitivityStart);
+
+        gameManager.currCreatureCount++;
 
         // start by flinging it in a random direction
         Vector2 randomVelocity = new Vector2(Random.Range(-startVeloctyRange, startVeloctyRange), 3);
@@ -55,11 +55,6 @@ public class Creature : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Visually unselect on mouse up
-        if (Input.GetMouseButtonUp(0))
-        {
-            spriteRenderer.color = color;
-        }
 
         // Keep max speed clamped
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
@@ -74,33 +69,25 @@ public class Creature : MonoBehaviour
     {
         switch (newState)
         {
-            case CreatureState.Grabbing:
-                spriteRenderer.color = Color.yellow;
+            case CreatureState.Targeted:
+                Glow.SetActive(true);
+                animator.SetBool("IsTargeted", true);
+                animator.SetBool("Targeted Layer.IsTargeted", true);
                 break;
             case CreatureState.GrabbedMiss:
-                spriteRenderer.color = color;
-                StartCoroutine(ResetToIdle());
+                SetState(CreatureState.Idle);
                 break;
             case CreatureState.Idle:
-                spriteRenderer.color = color;
+                Glow.SetActive(false);
                 break;
             case CreatureState.GrabbedDeath:
-                spriteRenderer.color = Color.red;
                 DestroyCreature();
                 break;
             case CreatureState.GrabbedSuccess:
-                spriteRenderer.color = Color.green;
                 DestroyCreature();
                 break;
         }
     }
-
-    IEnumerator ResetToIdle()
-    {
-        yield return new WaitForSeconds(.2f);
-        SetState(CreatureState.Idle);
-    }
-
 
     void DestroyCreature()
     {
@@ -132,6 +119,16 @@ public class Creature : MonoBehaviour
         
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Collision");
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            Debug.Log("Wall");
+            PlayBumpAnim();
+        }
+    }
+
     public float GetGrabSensitivity()
     {
         if (HasLargeGrabBar)
@@ -140,4 +137,15 @@ public class Creature : MonoBehaviour
         }
         return SmallSensitivity;
     }
+
+
+
+
+    public void PlayBumpAnim()
+    {
+        animator.Play("CreatureAnim_Bump");
+        animator.Play("Bump Layer.CreatureAnim_Bump");
+    }
+
+
 }

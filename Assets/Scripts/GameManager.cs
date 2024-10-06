@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
 
     private float secondsSinceLastSpawn = 0;
     public float spawnDelay = 2;
-    private int maxCreatureCount = 4;
+    private int maxCreatureCount = 3;
     public int currCreatureCount = 0;
 
     // Start is called before the first frame update
@@ -86,7 +86,6 @@ public class GameManager : MonoBehaviour
         Vector3 randomVector = new Vector3(Random.Range(-2.5f, 2.5f), Random.Range(-.5f, -3f), 0);
         Instantiate(GetRandomCreature(), randomVector, Quaternion.identity);
         secondsSinceLastSpawn = 0;
-        currCreatureCount++;
     }
 
 
@@ -234,7 +233,7 @@ public class GameManager : MonoBehaviour
         if (!TargetCreature && !IsGameOver)
         {
             TargetCreature = creature;
-            creature.SetState(CreatureState.Grabbing);
+            creature.SetState(CreatureState.Targeted);
             grabBarController.ShowGrabBar();
         }
     }
