@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public enum SoundEffect
 {
     Success,
@@ -14,7 +13,8 @@ public class AudioController : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip successAudio;
     public AudioClip missAudio;
-    public AudioClip deathAudio;
+
+    public List<AudioClip> squishAudioClips = new List<AudioClip>();
 
 
     public void PlaySoundEffect(SoundEffect soundEffect, float delay)
@@ -32,9 +32,15 @@ public class AudioController : MonoBehaviour
             case SoundEffect.Miss:
                 return missAudio;
             case SoundEffect.Death:
-                return deathAudio;
+                return GetRandomClip(squishAudioClips);
             default:
                 return null;
         }
+    }
+
+    AudioClip GetRandomClip(List<AudioClip> list)
+    {
+        int index = Random.Range(0, list.Count);
+        return list[index];
     }
 }
