@@ -11,15 +11,15 @@ public class IdleAudioController : MonoBehaviour
 
     private void Update()
     {
-        playCountdown -= Time.deltaTime;
-        if (playCountdown <= 0)
-        {
-            PlayIdleClip();
-            playCountdown = Random.Range(1f, 3f);
-        }
+        // playCountdown -= Time.deltaTime;
+        // if (playCountdown <= 0)
+        // {
+            // PlayIdleClip();
+            // playCountdown = Random.Range(1f, 3f);
+        // }
     }
 
-    void PlayIdleClip()
+    public void PlayIdleClip()
     {
         AudioClip clip = GetRandomClip(idleAudioClips);
         audioSource.panStereo = Random.Range(-1f, 1f);

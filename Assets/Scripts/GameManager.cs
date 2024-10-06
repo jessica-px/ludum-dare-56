@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     public Texture2D cursorTextureFocusRed;
 
     public bool IsGameOver { get; private set; } = false;
+    public int CreaturesCaught { get; private set; } = 0;
+    public int CreaturesSquished { get; private set; } = 0;
 
     public int initialCreatureCount = 3;
     public GameObject CreaturePrefab;
@@ -39,6 +41,7 @@ public class GameManager : MonoBehaviour
     private TimerController timerController;
     private PlayerHandController playerHandController;
     private AudioController audioController;
+    private IdleAudioController idleAudioController;
 
     private float timeSinceLastDeathOrSpawn = 0;
     public float spawnDelay = 3;
@@ -53,6 +56,7 @@ public class GameManager : MonoBehaviour
         newGameButton = uiRoot.Q<Button>("NewGameButton");
         newGameButton.clicked += () => StartNewGame();
 
+        idleAudioController = GameObject.Find("IdleSFX").GetComponent <IdleAudioController>();
         audioController = gameObject.GetComponent<AudioController>();
         grabBarController = GameObject.Find("GrabBar").GetComponent<GrabBarController>();
         hungerBarController = gameObject.GetComponent<HungerBarController>();
@@ -247,6 +251,7 @@ public class GameManager : MonoBehaviour
             TargetCreature = creature;
             creature.SetState(CreatureState.Targeted);
             grabBarController.ShowGrabBar();
+            idleAudioController.PlayIdleClip();
         }
     }
  
@@ -257,6 +262,7 @@ public class GameManager : MonoBehaviour
         // Success
         if (grabBarController.IsGrabPointerInZone() && TargetCreature.IsHovered)
         {
+            CreaturesCaught++;
             TargetCreature.SetState(CreatureState.GrabbedSuccess);
             hungerBarController.ChangeHunger(TargetCreature.hungerValue);
             playerHandController.PlayGrabAnimation(true);
@@ -266,6 +272,7 @@ public class GameManager : MonoBehaviour
         // Fail (pop the creature)
         else if (!grabBarController.IsGrabPointerInZone() && TargetCreature.IsHovered)
         {
+            CreaturesSquished++;
             TargetCreature.SetState(CreatureState.GrabbedDeath);
             playerHandController.PlayGrabAnimation(false);
             audioController.PlaySoundEffect(SoundEffect.Death, .5f);

@@ -186,21 +186,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 274051061}
   idleAudioClips:
-  - {fileID: 8300000, guid: d14aa8c0d9b0d2a4484883c75bdcc16c, type: 3}
-  - {fileID: 8300000, guid: d2d7bf5a0fb688342b56ea3f8292e60f, type: 3}
-  - {fileID: 8300000, guid: 20075333489d31e4ab21248885af1ec1, type: 3}
   - {fileID: 8300000, guid: 79e7c037eb654404f89d93f7bab50dc6, type: 3}
-  - {fileID: 8300000, guid: 86a42a5f187277a46bda698d6d2c5dda, type: 3}
   - {fileID: 8300000, guid: 73280d667ea676f4eab920a8f128d506, type: 3}
-  - {fileID: 8300000, guid: 63d7d4a9c1781db44b2fc29c190d2492, type: 3}
-  - {fileID: 8300000, guid: 5019ee942acb5754fbd5c21729ecba16, type: 3}
-  - {fileID: 8300000, guid: 08eae25af57838c49a2f6ea73b4f1a8a, type: 3}
-  - {fileID: 8300000, guid: b1f86ddafef9d5f4096db8fa36a84d82, type: 3}
   - {fileID: 8300000, guid: 26b7e4c55dfa1d34aaa3a68a0efc3fa9, type: 3}
   - {fileID: 8300000, guid: bd41476c8d8da974e8a166ffc8b4a878, type: 3}
-  - {fileID: 8300000, guid: b2feb0ef075b7c1428682c47a132d67c, type: 3}
-  - {fileID: 8300000, guid: 404f2c75b45331845b7458e0850ab172, type: 3}
-  - {fileID: 8300000, guid: 6c6fdde1fd0a11747a45f04d70a39b8f, type: 3}
 --- !u!82 &274051061
 AudioSource:
   m_ObjectHideFlags: 0
