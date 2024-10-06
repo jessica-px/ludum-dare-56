@@ -35,8 +35,8 @@ public class GameManager : MonoBehaviour
     private PlayerHandController playerHandController;
     private AudioController audioController;
 
-    private float secondsSinceLastSpawn = 0;
-    public float spawnDelay = 2;
+    private float timeSinceLastDeathOrSpawn = 0;
+    public float spawnDelay = 3;
     private int maxCreatureCount = 3;
     public int currCreatureCount = 0;
 
@@ -65,8 +65,11 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        secondsSinceLastSpawn += Time.deltaTime;
-        if (secondsSinceLastSpawn > spawnDelay && currCreatureCount < maxCreatureCount)
+        timeSinceLastDeathOrSpawn += Time.deltaTime;
+        bool noCreaturesLeft = currCreatureCount == 0;
+        bool spawnDelayhasPassed = timeSinceLastDeathOrSpawn > spawnDelay;
+        bool canSpawn = (noCreaturesLeft || spawnDelayhasPassed) && currCreatureCount < maxCreatureCount;
+        if (canSpawn)
         {
             SpawnCreature();
         }
@@ -85,7 +88,7 @@ public class GameManager : MonoBehaviour
         // we'll want to check for collisions here
         Vector3 randomVector = new Vector3(Random.Range(-2.5f, 2.5f), Random.Range(-.5f, -3f), 0);
         Instantiate(GetRandomCreature(), randomVector, Quaternion.identity);
-        secondsSinceLastSpawn = 0;
+        timeSinceLastDeathOrSpawn = 0;
     }
 
 
@@ -250,6 +253,7 @@ public class GameManager : MonoBehaviour
             hungerBarController.ChangeHunger(TargetCreature.hungerValue);
             playerHandController.PlayGrabAnimation(true);
             audioController.PlaySoundEffect(SoundEffect.Success, .2f);
+            timeSinceLastDeathOrSpawn = 0;
         }
         // Fail (pop the creature)
         else if (!grabBarController.IsGrabPointerInZone() && TargetCreature.IsHovered)
@@ -257,6 +261,7 @@ public class GameManager : MonoBehaviour
             TargetCreature.SetState(CreatureState.GrabbedDeath);
             playerHandController.PlayGrabAnimation(false);
             audioController.PlaySoundEffect(SoundEffect.Death, .5f);
+            timeSinceLastDeathOrSpawn = 0;
         }
         // Fail (miss)
         else
