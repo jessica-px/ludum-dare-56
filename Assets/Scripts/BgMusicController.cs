@@ -10,7 +10,7 @@ public class BgMusicController : MonoBehaviour
     void Start()
     {
         audioSource = gameObject.GetComponent<AudioSource>();
-        StartCoroutine(StartFade(0, 1, 1));
+        StartCoroutine(StartFade(0, audioSource.volume, 1));
     }
 
     public IEnumerator StartFade(float startVolume, float targetVolume, float duration)
