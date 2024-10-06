@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviour
     void SpawnCreature()
     {
         // we'll want to check for collisions here
-        Vector3 randomVector = new Vector3(Random.Range(-2.5f, 2.5f), Random.Range(-.3f, -2.5f), 0);
+        Vector3 randomVector = new Vector3(Random.Range(-2.5f, 2.5f), Random.Range(-.5f, -3f), 0);
         Instantiate(GetRandomCreature(), randomVector, Quaternion.identity);
         secondsSinceLastSpawn = 0;
         currCreatureCount++;
