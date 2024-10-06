@@ -127,13 +127,13 @@ public class GameManager : MonoBehaviour
         switch (phase)
         {
             case GamePhase.Early:
-                spawnDelay = 1.25f;
+                spawnDelay = 2f;
                 break;
             case GamePhase.EarlyMid:
-                spawnDelay = 1.1f;
+                spawnDelay = 1.5f;
                 break;
             case GamePhase.Mid:
-                spawnDelay = 1f;
+                spawnDelay = 1.25f;
                 break;
             case GamePhase.Late:
                 spawnDelay = .9f;
@@ -202,15 +202,15 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        // end game: 20% normal, 50% fast, 30% extra fast
+        // end game: 10% normal, 40% fast, 50% extra fast
         else 
         {
             float percent = Random.Range(0, 1f);
-            if (percent < .2)
+            if (percent < .1)
             {
                 return CreaturePrefab;
             }
-            else if (percent < .7)
+            else if (percent < .5)
             {
                 return FastCreaturePrefab;
             }

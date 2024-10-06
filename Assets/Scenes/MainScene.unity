@@ -1471,7 +1471,7 @@ PrefabInstance:
       addedObject: {fileID: 1698819551}
     - targetCorrespondingSourceObject: {fileID: 4665388766181111277, guid: 37e260cc9e4af4dc691a37407141e206, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1763775240}
+      addedObject: {fileID: 1763775243}
   m_SourcePrefab: {fileID: 100100000, guid: 37e260cc9e4af4dc691a37407141e206, type: 3}
 --- !u!1 &1019321963
 GameObject:
@@ -2192,7 +2192,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 1698819548}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 4a8e1e92c225e3f47b22c053475d9e46, type: 2}
+  m_Material: {fileID: 6200000, guid: 661ac180d2e3f8949993edf659d7f0dd, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2215,16 +2215,16 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.5648568, y: -7.319379}
+  m_Offset: {x: 1.4454609, y: -6.9313517}
   serializedVersion: 2
-  m_Radius: 2.304474
+  m_Radius: 1.1045384
 --- !u!1 &1763775237 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4665388766181111277, guid: 37e260cc9e4af4dc691a37407141e206, type: 3}
   m_PrefabInstance: {fileID: 931439512}
   m_PrefabAsset: {fileID: 0}
---- !u!70 &1763775240
-CapsuleCollider2D:
+--- !u!58 &1763775243
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2232,7 +2232,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 1763775237}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 4a8e1e92c225e3f47b22c053475d9e46, type: 2}
+  m_Material: {fileID: 6200000, guid: 661ac180d2e3f8949993edf659d7f0dd, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -2255,9 +2255,9 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 4.473255, y: -6.917219}
-  m_Size: {x: 2.1909368, y: 3.369863}
-  m_Direction: 0
+  m_Offset: {x: 3.0100622, y: -7.073946}
+  serializedVersion: 2
+  m_Radius: 1.4424968
 --- !u!1 &1872882547
 GameObject:
   m_ObjectHideFlags: 0
