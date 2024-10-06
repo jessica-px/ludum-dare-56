@@ -1,6 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static System.Runtime.CompilerServices.RuntimeHelpers;
 
 public enum GamePhase
 {
@@ -67,6 +68,14 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
+
+
+        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Break();
+        }
+        
 
         timeSinceLastDeathOrSpawn += Time.deltaTime;
         bool noCreaturesLeft = currCreatureCount == 0;
