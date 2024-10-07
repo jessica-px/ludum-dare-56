@@ -14,8 +14,8 @@ public class TimerController : MonoBehaviour
     void Start()
     {
         gameManager = gameObject.GetComponent<GameManager>();
-        uiRoot = GameObject.Find("Canvas").GetComponent<UIDocument>().rootVisualElement;
-        timerLabel = uiRoot.Q<Label>("TimerLabel");
+        //uiRoot = GameObject.Find("Canvas").GetComponent<UIDocument>().rootVisualElement;
+        //timerLabel = uiRoot.Q<Label>("TimerLabel");
     }
 
     void Update()
@@ -23,9 +23,6 @@ public class TimerController : MonoBehaviour
         if (!gameManager.IsGameOver)
         {
             TimeElapsed += Time.deltaTime;
-            int secondsElapsed = Mathf.RoundToInt(TimeElapsed);
-            var timespan = TimeSpan.FromSeconds(secondsElapsed);
-            timerLabel.text = timespan.ToString((@"mm\:ss"));
         }
     }
 

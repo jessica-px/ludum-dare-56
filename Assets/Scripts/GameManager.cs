@@ -58,9 +58,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         uiRoot = GameObject.Find("Canvas").GetComponent<UIDocument>().rootVisualElement;
-        gameOverContainer = uiRoot.Q("GameOverContainer");
-        newGameButton = uiRoot.Q<Button>("NewGameButton");
-        newGameButton.clicked += () => StartNewGame(true);
 
         audioController = gameObject.GetComponent<AudioController>();
         idleAudioController = GameObject.Find("IdleSFX").GetComponent <IdleAudioController>();
@@ -250,10 +247,10 @@ public class GameManager : MonoBehaviour
         IsGameOver = false;
         timerController.Reset();
         hungerBarController.Reset();
-        gameOverContainer.style.visibility = Visibility.Hidden;
         SpawnCreature();
         currCreatureCount = 0;
         scoreModal.SetActive(false);
+        uiRoot.Q<Label>("MorselsCount").text = "0";
         if (restartMusic)
         {
             bgMusicController.StartMusic();
@@ -284,6 +281,7 @@ public class GameManager : MonoBehaviour
             playerHandController.PlayGrabAnimation(true);
             catchSFXController.PlayRandomClip();
             timeSinceLastDeathOrSpawn = 0;
+            uiRoot.Q<Label>("MorselsCount").text = CreaturesCaught.ToString();
         }
         // Fail (pop the creature)
         else if (!grabBarController.IsGrabPointerInZone() && TargetCreature.IsHovered)
@@ -319,7 +317,6 @@ public class GameManager : MonoBehaviour
         IsGameOver = true;
         grabBarController.HideGrabBar();
         UnsetTargetCreature();
-        gameOverContainer.style.visibility = Visibility.Visible;
         bgMusicController.StartEndTag();
         scoreModal.SetActive(true);
         Debug.Log("Game over!");
