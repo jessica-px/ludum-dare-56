@@ -12,7 +12,12 @@ public class CatchSFXController : MonoBehaviour
     {
         AudioClip clip = GetRandomClip(audioClips);
         audioSource.PlayOneShot(clip);
-        StartCoroutine(PlayRandomCackleAfterDelay(.2f));
+
+        float random = Random.Range(0, 1f);
+        if (random < .4)
+        {
+            StartCoroutine(PlayRandomCackleAfterDelay(.2f));
+        }
     }
 
 
