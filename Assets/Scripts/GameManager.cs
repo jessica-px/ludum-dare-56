@@ -40,8 +40,10 @@ public class GameManager : MonoBehaviour
     private HungerBarController hungerBarController;
     private TimerController timerController;
     private PlayerHandController playerHandController;
+
     private AudioController audioController;
     private IdleAudioController idleAudioController;
+    private CatchSFXController catchSFXController;
 
     private float timeSinceLastDeathOrSpawn = 0;
     public float spawnDelay = 3;
@@ -56,12 +58,15 @@ public class GameManager : MonoBehaviour
         newGameButton = uiRoot.Q<Button>("NewGameButton");
         newGameButton.clicked += () => StartNewGame();
 
-        idleAudioController = GameObject.Find("IdleSFX").GetComponent <IdleAudioController>();
         audioController = gameObject.GetComponent<AudioController>();
+        idleAudioController = GameObject.Find("IdleSFX").GetComponent <IdleAudioController>();
+        catchSFXController = GameObject.Find("CatchSFX").GetComponent<CatchSFXController>();
+
         grabBarController = GameObject.Find("GrabBar").GetComponent<GrabBarController>();
         hungerBarController = gameObject.GetComponent<HungerBarController>();
         timerController = gameObject.GetComponent<TimerController>();
         playerHandController = GameObject.Find("PlayerHand").GetComponent<PlayerHandController>();
+
         SetCursor(false, null);
         StartNewGame();
     }
@@ -266,7 +271,7 @@ public class GameManager : MonoBehaviour
             TargetCreature.SetState(CreatureState.GrabbedSuccess);
             hungerBarController.ChangeHunger(TargetCreature.hungerValue);
             playerHandController.PlayGrabAnimation(true);
-            audioController.PlaySoundEffect(SoundEffect.Success, .2f);
+            catchSFXController.PlayRandomClip();
             timeSinceLastDeathOrSpawn = 0;
         }
         // Fail (pop the creature)

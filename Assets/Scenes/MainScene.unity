@@ -154,6 +154,160 @@ Transform:
   - {fileID: 1122842678}
   m_Father: {fileID: 516024851}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &51729414
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 51729417}
+  - component: {fileID: 51729416}
+  - component: {fileID: 51729415}
+  m_Layer: 0
+  m_Name: CatchSFX
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &51729415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51729414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7d2647aa72db8c488fb01b577574a02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 51729416}
+  audioClips:
+  - {fileID: 8300000, guid: 6dab47060707f8644b782c4a08234c34, type: 3}
+  - {fileID: 8300000, guid: a1c59ab735089a4418d204ff072821a6, type: 3}
+  - {fileID: 8300000, guid: 20c47b732a3d2ac439f355f8c7704269, type: 3}
+  cackeClips:
+  - {fileID: 8300000, guid: c02cb861e6627d140bea7fcd089207cf, type: 3}
+  - {fileID: 8300000, guid: 26b76ba663cccc24b86108aa32359495, type: 3}
+  - {fileID: 8300000, guid: 6564d7dd3a707024480fc65438038dba, type: 3}
+  - {fileID: 8300000, guid: d1f9fa98cd1b21f4ab47ecb20db4bdda, type: 3}
+  - {fileID: 8300000, guid: 28e26c1d9a3d42d439a5a1a09b963948, type: 3}
+  - {fileID: 8300000, guid: 4e1cd99b4c647924097dbcee2d0789ac, type: 3}
+  - {fileID: 8300000, guid: de7f5480d8f366c48820d826a296e288, type: 3}
+--- !u!82 &51729416
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51729414}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &51729417
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51729414}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.38910452, y: -1.0951498, z: -0.06251338}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &274051059
 GameObject:
   m_ObjectHideFlags: 0
@@ -186,10 +340,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 274051061}
   idleAudioClips:
-  - {fileID: 8300000, guid: 79e7c037eb654404f89d93f7bab50dc6, type: 3}
-  - {fileID: 8300000, guid: 73280d667ea676f4eab920a8f128d506, type: 3}
-  - {fileID: 8300000, guid: 26b7e4c55dfa1d34aaa3a68a0efc3fa9, type: 3}
-  - {fileID: 8300000, guid: bd41476c8d8da974e8a166ffc8b4a878, type: 3}
+  - {fileID: 8300000, guid: e5ad6840cf0bea84fa1f892ae89f34bd, type: 3}
+  - {fileID: 8300000, guid: 298bb0c115174974485cb3bcf5c66bb3, type: 3}
+  - {fileID: 8300000, guid: 00b56fe719fc00249b6c4161a0d14b32, type: 3}
+  - {fileID: 8300000, guid: 0f30a58fcd41b3b4f8eccb639c38ecf2, type: 3}
 --- !u!82 &274051061
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2171,10 +2325,10 @@ MonoBehaviour:
   successAudio: {fileID: 8300000, guid: e7d8173f05f02224598f2bb4f89b15b3, type: 3}
   missAudio: {fileID: 8300000, guid: eea78846cdc24204c9ec5fac6a3a0072, type: 3}
   squishAudioClips:
-  - {fileID: 8300000, guid: c345c5d5e64f7df4abff3690fa766815, type: 3}
-  - {fileID: 8300000, guid: 16c2ff66c4354f6429cfedc68cc87734, type: 3}
-  - {fileID: 8300000, guid: 9c09d24ca0c1be14b95c5ed79ef1004b, type: 3}
-  - {fileID: 8300000, guid: 10a3a094c4fb51749bd9dba1c1d2b78a, type: 3}
+  - {fileID: 8300000, guid: 329a6e580aa1a5d48b03d48837f8519d, type: 3}
+  - {fileID: 8300000, guid: 0e29e2fddbc42604fbddd884d0bc2ce7, type: 3}
+  - {fileID: 8300000, guid: 3e13d9d920355e047a355631061fdda4, type: 3}
+  - {fileID: 8300000, guid: bf03166d5972fa54ca2b8cfa6f813f63, type: 3}
 --- !u!82 &1405003765
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2998,3 +3152,4 @@ SceneRoots:
   - {fileID: 516024851}
   - {fileID: 814517834}
   - {fileID: 274051062}
+  - {fileID: 51729417}

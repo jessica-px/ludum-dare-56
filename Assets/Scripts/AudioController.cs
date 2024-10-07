@@ -19,8 +19,7 @@ public class AudioController : MonoBehaviour
 
     public void PlaySoundEffect(SoundEffect soundEffect, float delay)
     {
-        audioSource.clip = GetAudioClip(soundEffect);
-        audioSource.PlayDelayed(delay);
+        StartCoroutine(PlayAfterDelay(soundEffect, delay));
     }
 
     AudioClip GetAudioClip(SoundEffect soundEffect)
@@ -42,5 +41,11 @@ public class AudioController : MonoBehaviour
     {
         int index = Random.Range(0, list.Count);
         return list[index];
+    }
+
+    IEnumerator PlayAfterDelay(SoundEffect soundEffect, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        audioSource.PlayOneShot(GetAudioClip(soundEffect));
     }
 }
