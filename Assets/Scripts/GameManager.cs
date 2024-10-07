@@ -1,3 +1,4 @@
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
     public Texture2D cursorTextureFocusGreen;
     public Texture2D cursorTextureFocusRed;
     public GameObject scoreModal;
+    public TextMeshProUGUI scoreModalText;
 
     public bool IsGameOver { get; private set; } = false;
     public int CreaturesCaught { get; private set; } = 0;
@@ -105,6 +107,7 @@ public class GameManager : MonoBehaviour
         }
 
         UpdateSpawnDelay();
+        scoreModalText.text = CreaturesCaught.ToString();
     }
 
 
