@@ -209,7 +209,7 @@ SpriteRenderer:
   m_SortingLayerID: -476054797
   m_SortingLayer: 3
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 98cc0d059e8b5ec4f9ce622f8e0647ad, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5a2ecd2c74be745be8bf0bc0dc59d2f5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -236,8 +236,8 @@ MonoBehaviour:
   tutorialScreen: {fileID: 0}
   gameScreen: {fileID: 0}
   buttonSfxController: {fileID: 0}
-  hoverSprite: {fileID: 21300000, guid: 6d8b8eb9d5cb71f429e6a5161ba22e41, type: 3}
-  unhoveredSprite: {fileID: 21300000, guid: 98cc0d059e8b5ec4f9ce622f8e0647ad, type: 3}
+  hoverSprite: {fileID: 21300000, guid: e92bc66f3461846e79dea14a288f31bc, type: 3}
+  unhoveredSprite: {fileID: 21300000, guid: 5a2ecd2c74be745be8bf0bc0dc59d2f5, type: 3}
   buttonType: 2
 --- !u!61 &6016636585242457349
 BoxCollider2D:
