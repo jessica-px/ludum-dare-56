@@ -2305,6 +2305,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1211097370 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1104245069730607106, guid: 881d8d64d1e531647b042729b39aed63, type: 3}
+  m_PrefabInstance: {fileID: 580064428415122464}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1301379889 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8667766564166217155, guid: 37e260cc9e4af4dc691a37407141e206, type: 3}
@@ -2421,7 +2432,7 @@ MonoBehaviour:
   cursorTextureFocusGreen: {fileID: 2800000, guid: 4dee5db619df0a34ca31bc1171d04c6d, type: 3}
   cursorTextureFocusRed: {fileID: 2800000, guid: 0412438d5f9e29248b0b56ae89da0817, type: 3}
   scoreModal: {fileID: 1718921948}
-  scoreModalText: {fileID: 0}
+  scoreModalText: {fileID: 1211097370}
   initialCreatureCount: 3
   CreaturePrefab: {fileID: 6616758776748775203, guid: 384cf8adcd2875c4f88f4440b0d173e9, type: 3}
   SlowCreaturePrefab: {fileID: 7079843347043685422, guid: 52875f523ffe4a642ac0371355814271, type: 3}
@@ -2485,7 +2496,11 @@ MonoBehaviour:
   audioSource: {fileID: 1405003765}
   successAudio: {fileID: 8300000, guid: e7d8173f05f02224598f2bb4f89b15b3, type: 3}
   missAudio: {fileID: 8300000, guid: a3551a34db1bd0e43ad1b86ace82c5c3, type: 3}
-  squishAudioClips: []
+  squishAudioClips:
+  - {fileID: 8300000, guid: bf03166d5972fa54ca2b8cfa6f813f63, type: 3}
+  - {fileID: 8300000, guid: 3e13d9d920355e047a355631061fdda4, type: 3}
+  - {fileID: 8300000, guid: 0e29e2fddbc42604fbddd884d0bc2ce7, type: 3}
+  - {fileID: 8300000, guid: 329a6e580aa1a5d48b03d48837f8519d, type: 3}
 --- !u!82 &1405003765
 AudioSource:
   m_ObjectHideFlags: 0
