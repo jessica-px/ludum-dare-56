@@ -48,6 +48,9 @@ TagManager:
   - name: Game
     uniqueID: 3817051793
     locked: 0
+  - name: Goo
+    uniqueID: 902951245
+    locked: 0
   - name: UI
     uniqueID: 3818912499
     locked: 0
