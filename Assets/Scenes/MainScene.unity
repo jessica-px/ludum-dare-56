@@ -2324,7 +2324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1405003765}
   successAudio: {fileID: 8300000, guid: e7d8173f05f02224598f2bb4f89b15b3, type: 3}
-  missAudio: {fileID: 8300000, guid: eea78846cdc24204c9ec5fac6a3a0072, type: 3}
+  missAudio: {fileID: 8300000, guid: a3551a34db1bd0e43ad1b86ace82c5c3, type: 3}
   squishAudioClips:
   - {fileID: 8300000, guid: 329a6e580aa1a5d48b03d48837f8519d, type: 3}
   - {fileID: 8300000, guid: 0e29e2fddbc42604fbddd884d0bc2ce7, type: 3}

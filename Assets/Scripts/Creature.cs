@@ -19,6 +19,8 @@ public class Creature : MonoBehaviour
     private Animator animator;
     public bool HasLargeGrabBar;
     public GameObject Glow;
+    public AudioSource audioSource;
+    public List<AudioClip> bounceClips = new List<AudioClip>();
 
     public bool IsHovered { get; private set; } = false;
     public float maxSpeed = 2;
@@ -116,10 +118,9 @@ public class Creature : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            PlayBumpAnim();
-        }
+        int index = Random.Range(0, bounceClips.Count);
+        AudioClip clip = bounceClips[index];
+        audioSource.PlayOneShot(clip);
     }
 
     public float GetGrabSensitivity()
