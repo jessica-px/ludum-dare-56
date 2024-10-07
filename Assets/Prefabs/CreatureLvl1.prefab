@@ -736,6 +736,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 21852465bb3934d4b9efe4ad6c18bfd5, type: 3}
   - {fileID: 8300000, guid: 706244f0be5b6a54b826d2b2d2be7e57, type: 3}
   - {fileID: 8300000, guid: cf88e86a78121f843a8ac0b3f3653916, type: 3}
+  - {fileID: 8300000, guid: 46569da80e3d49c4eb9a530e8181cc78, type: 3}
   maxSpeed: 4
   startVeloctyRange: 3
   hungerValue: 30
