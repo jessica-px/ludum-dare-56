@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     public Texture2D cursorTextureFocus;
     public Texture2D cursorTextureFocusGreen;
     public Texture2D cursorTextureFocusRed;
+    public GameObject scoreModal;
 
     public bool IsGameOver { get; private set; } = false;
     public int CreaturesCaught { get; private set; } = 0;
@@ -249,6 +250,7 @@ public class GameManager : MonoBehaviour
         gameOverContainer.style.visibility = Visibility.Hidden;
         SpawnCreature();
         currCreatureCount = 0;
+        scoreModal.SetActive(false);
         if (restartMusic)
         {
             bgMusicController.StartMusic();
@@ -316,6 +318,7 @@ public class GameManager : MonoBehaviour
         UnsetTargetCreature();
         gameOverContainer.style.visibility = Visibility.Visible;
         bgMusicController.StartEndTag();
+        scoreModal.SetActive(true);
         Debug.Log("Game over!");
     }
 

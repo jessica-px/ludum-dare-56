@@ -20,11 +20,13 @@ public class StartMenuManager : MonoBehaviour
     public ButtonType buttonType;
 
     SpriteRenderer spriteRenderer;
+    GameManager gameManager;
 
     private void Start()
     {
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         buttonSfxController = GameObject.Find("ButtonSFX").GetComponent<ButtonSFXController>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     private void OnMouseDown()
@@ -40,6 +42,9 @@ public class StartMenuManager : MonoBehaviour
             case ButtonType.Tutorial:
                 tutorialScreen.SetActive(false);
                 gameScreen.SetActive(true);
+                break;
+            case ButtonType.PlayAgain:
+                gameManager.StartNewGame(true);
                 break;
         }
         
