@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
         uiRoot = GameObject.Find("Canvas").GetComponent<UIDocument>().rootVisualElement;
         gameOverContainer = uiRoot.Q("GameOverContainer");
         newGameButton = uiRoot.Q<Button>("NewGameButton");
-        newGameButton.clicked += () => StartNewGame();
+        newGameButton.clicked += () => StartNewGame(true);
 
         audioController = gameObject.GetComponent<AudioController>();
         idleAudioController = GameObject.Find("IdleSFX").GetComponent <IdleAudioController>();
@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
         playerHandController = GameObject.Find("PlayerHand").GetComponent<PlayerHandController>();
 
         SetCursor(false, null);
-        StartNewGame();
+        StartNewGame(false);
     }
 
     // Update is called once per frame
@@ -241,15 +241,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void StartNewGame()
+    public void StartNewGame(bool restartMusic)
     {
         IsGameOver = false;
         timerController.Reset();
         hungerBarController.Reset();
         gameOverContainer.style.visibility = Visibility.Hidden;
         SpawnCreature();
-        bgMusicController.StartMusic();
         currCreatureCount = 0;
+        if (restartMusic)
+        {
+            bgMusicController.StartMusic();
+        }
     }
 
     public void SetTargetCreature(Creature creature)
