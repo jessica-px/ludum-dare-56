@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
     private AudioController audioController;
     private IdleAudioController idleAudioController;
     private CatchSFXController catchSFXController;
+    private BgMusicController bgMusicController;
 
     private float timeSinceLastDeathOrSpawn = 0;
     public float spawnDelay = 3;
@@ -61,6 +62,7 @@ public class GameManager : MonoBehaviour
         audioController = gameObject.GetComponent<AudioController>();
         idleAudioController = GameObject.Find("IdleSFX").GetComponent <IdleAudioController>();
         catchSFXController = GameObject.Find("CatchSFX").GetComponent<CatchSFXController>();
+        bgMusicController = GameObject.Find("BgMusic").GetComponent<BgMusicController>();
 
         grabBarController = GameObject.Find("GrabBar").GetComponent<GrabBarController>();
         hungerBarController = gameObject.GetComponent<HungerBarController>();
@@ -246,6 +248,7 @@ public class GameManager : MonoBehaviour
         hungerBarController.Reset();
         gameOverContainer.style.visibility = Visibility.Hidden;
         SpawnCreature();
+        bgMusicController.StartMusic();
         currCreatureCount = 0;
     }
 
@@ -309,6 +312,7 @@ public class GameManager : MonoBehaviour
         grabBarController.HideGrabBar();
         UnsetTargetCreature();
         gameOverContainer.style.visibility = Visibility.Visible;
+        bgMusicController.StartEndTag();
         Debug.Log("Game over!");
     }
 
