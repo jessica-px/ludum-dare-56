@@ -731,7 +731,7 @@ MonoBehaviour:
   Glow: {fileID: 6614195808978578218}
   maxSpeed: 4
   startVeloctyRange: 3
-  hungerValue: 20
+  hungerValue: 30
   sensitivityStart: 0.25
 --- !u!1 &7848839815343499482
 GameObject:

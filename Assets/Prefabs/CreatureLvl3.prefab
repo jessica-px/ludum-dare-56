@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7585482152153468324, guid: 384cf8adcd2875c4f88f4440b0d173e9, type: 3}
       propertyPath: hungerValue
-      value: 12
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7585482152153468324, guid: 384cf8adcd2875c4f88f4440b0d173e9, type: 3}
       propertyPath: HasLargeGrabBar

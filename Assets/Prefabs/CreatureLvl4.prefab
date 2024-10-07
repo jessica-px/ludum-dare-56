@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2928427920485337692, guid: 6d54e1a97ea630741b65d0cb88ab6f4c, type: 3}
       propertyPath: hungerValue
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2928427920485337692, guid: 6d54e1a97ea630741b65d0cb88ab6f4c, type: 3}
       propertyPath: startVeloctyRange
